@@ -1,7 +1,6 @@
 const inputPhoneNumber = document.getElementById('phone');
-const link = document.getElementById('link');
-const btnCopy = document.getElementById('copy-link');
 const btnCreateLink = document.getElementById('create-link')
+const btnCopy = document.getElementById('copy-link')
 
 //Ações dos botões
 btnCreateLink.addEventListener('click', () => {
@@ -17,22 +16,32 @@ function openModal(){
   document.getElementById('content-link').style.display = 'flex';
 }
 
+//Limpa div do link
 function clearLink(){
-  link.setAttribute('href', '#')
-  link.removeChild()
+  let div = document.getElementById('box-link')
+  div.innerHTML = ''
 }
 
+//Cria modal do link gerado
 function editLink(){
   clearLink()
-  let address = createLink()
-  let textLink = document.createTextNode(address)
-  link.setAttribute('href', address)
+  
+  let textLink = document.createTextNode(createLink())
+
+  let link = document.createElement('a')
+  link.setAttribute('class','ipt')
+  link.setAttribute('id','link')
+  link.setAttribute('href', createApplicationLink())
   link.appendChild(textLink)
+
+  document.getElementById('box-link').appendChild(link)
 }
 
 //Criar a string do endereço com o telefone
 function createLink(){
-  let phoneNumber = inputPhoneNumber.value;
-  let linkApiWP = 'https://api.whatsapp.com/send?phone=+55'
-  return linkApiWP + phoneNumber
+  return 'https://api.whatsapp.com/send?phone=+55' + inputPhoneNumber.value;
+}
+
+function createApplicationLink(){
+  return "whatsapp://send/?phone=%2055" + inputPhoneNumber.value
 }
