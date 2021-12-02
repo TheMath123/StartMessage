@@ -16,4 +16,4 @@ A ideia inicial era uma forma simples de analisar se o número do telefone tinha
 Migração para outra tecnologia, como React ou Flutter.
 Adição de novos recursos. Como posibilidade de mudar o DDI.
 
-#### [EN-US](REAME.md)
+#### [EN-US](README.md)
