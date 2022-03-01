@@ -6,7 +6,8 @@ StartMenssage is basically an application, where you put the phone number, and i
 The initial idea was a simple way to analyze if the phone number had whatsapp, so this application was born.
 
 ## Current features
- - Create link to whatsapp profile (only DDI from Brasil).
+ - Create link to whatsapp profile.
+ - Choose [DDI](https://en.wikipedia.org/wiki/International_direct_dialing) from other countries.
  
 ## Technologies
  - Vanilla JavaScript
@@ -15,6 +16,5 @@ The initial idea was a simple way to analyze if the phone number had whatsapp, s
 
 ## Future of Application
 Migration to another technology (such as React or Flutter).
-Added new features. (As IDD change)
 
 #### [PT-BR](REAME-PTBR.md)
