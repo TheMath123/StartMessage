@@ -46,7 +46,10 @@ header img {
 .content {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -62,9 +65,17 @@ header img {
 
   background-color: #1e2428;
   border-radius: 3px;
-  max-width: 38rem;
+  max-width: 50rem;
   box-shadow: 0 17px 50px 0 rgba(var(--shadow-rgb), 0.19),
     0 12px 15px 0 rgba(var(--shadow-rgb), 0.24);
+
+  transition: all .3s;
+}
+
+@media (max-width: 649px) {
+  .container {
+    max-width: 28.75rem;
+  }
 }
 
 .logo {
@@ -166,6 +177,11 @@ footer a {
 a {
   font-family: sans-serif;
   font-size: 1rem;
+  transition: all .3s;
+}
+
+a:hover {
+  filter: brightness(1.1)
 }
 
 /* button */
@@ -206,4 +222,10 @@ button:hover {
   background: #33383b;
   border: 1px solid #33383b;
   width: 200px;
+
+  transition: filter .3s;
+}
+
+.select:hover {
+  filter: brightness(1.1);
 }
