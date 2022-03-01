@@ -1183,8 +1183,6 @@ const ddi = [
 
 let selectDdi = document.getElementById('ddi');
 
-fillSelect()
-
 function fillSelect() {
   ddi.map(item => {
     createOption(item)
@@ -1200,3 +1198,5 @@ function createOption(item) {
 
   selectDdi.appendChild(option)
 }
+
+fillSelect()
