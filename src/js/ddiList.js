@@ -1,3 +1,4 @@
+//List DDI
 const ddi = [
   {
     "ddi": 93,
@@ -1180,6 +1181,8 @@ const ddi = [
     "continent": "África"
   }
 ]
+
+//Fill select with DDI
 
 let selectDdi = document.getElementById('ddi');
 
