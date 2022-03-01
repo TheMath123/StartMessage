@@ -1,6 +1,6 @@
 # StartMessage
 
-StartMenssage is basically an application, where you put the phone number, and it generates a link to start a chat on whatsapp, working for both WhatsApp Mobile and App Desktop.
+StartMessage generates a link to start a WhatsApp conversation from a phone number.
 
 ## Motivation
 The initial idea was a simple way to analyze if the phone number had whatsapp, so this application was born.
