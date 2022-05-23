@@ -3,6 +3,16 @@ const btnCreateLink = document.getElementById('create-link')
 const btnCopy = document.getElementById('copy-link')
 const selectItem = document.getElementById('ddi')
 
+//Formata número DDI e Telefone
+function getPhoneNumber() {
+  let ddi = selectItem.value
+  let phoneNumber = inputPhoneNumber.value
+
+  phoneNumber = phoneNumber.replace(/\D/gim, '');
+
+  return `${ddi}${phoneNumber}`
+}
+
 //Ações dos botões
 btnCreateLink.addEventListener('click', () => {
   editLink()
@@ -44,9 +54,9 @@ function editLink() {
 
 //Criar a string do endereço com o telefone
 function createLink() {
-  return 'https://api.whatsapp.com/send?phone=+' + selectItem.value + inputPhoneNumber.value;
+  return 'https://wa.me/' + getPhoneNumber();
 }
 
 function createApplicationLink() {
-  return "whatsapp://send/?phone=" + selectItem.value + inputPhoneNumber.value
+  return "whatsapp://send/?phone=" + getPhoneNumber();
 }
