@@ -15,6 +15,6 @@ The initial idea was a simple way to analyze if the phone number had whatsapp, s
  - CSS3
 
 ## Future of Application
-Migration to another technology (such as React or Flutter).
+Migration to Svelte > (branch of migration)[https://github.com/TheMath123/StartMessage/tree/migrate-for-svelte].
 
 #### [PT-BR](REAME-PTBR.md)
