@@ -14,6 +14,6 @@ A ideia inicial era uma forma simples de analisar se o número do telefone tinha
  - CSS3
 
 ## O futuro da aplicação
-Migração para outra tecnologia, como React ou Flutter.
+Migração para Svelte > [branch da migração](https://github.com/TheMath123/StartMessage/tree/migrate-for-svelte).
 
 #### [EN-US](README.md)
