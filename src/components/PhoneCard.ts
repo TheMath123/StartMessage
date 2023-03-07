@@ -38,7 +38,7 @@ export function PhoneCard() {
         id="ddi"
         class="text-font px-6 py-3 rounded-xl bg-zinc-900"
       >
-        ${countryCodes.map((item, index) => {
+        ${countryCodes.map((item: CountryCodeProps, index: number) => {
           return html` <option
             value="${item.dial_code}"
             .selected=${index === 29}
