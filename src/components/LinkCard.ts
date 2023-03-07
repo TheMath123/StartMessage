@@ -1,5 +1,4 @@
 import { html } from "lithen-tag-functions";
-import { Links } from "../helpers/Links";
 import { dataPhone } from "./PhoneCard";
 
 export function LinkCard() {
