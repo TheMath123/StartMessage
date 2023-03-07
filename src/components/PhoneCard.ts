@@ -1,4 +1,4 @@
-import { html, ref, signal, SignalListener } from "lithen-tag-functions";
+import { html, ref, signal } from "lithen-tag-functions";
 import { Links } from "../helpers/Links";
 
 import countryCodes from "../assets/CountryCodes.json";
