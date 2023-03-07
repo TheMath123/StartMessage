@@ -1,4 +1,4 @@
-export class Links implements ILinksProps {
+export class Links implements ILinks {
   ddi: string;
   phoneNumber: string;
   message?: string;
