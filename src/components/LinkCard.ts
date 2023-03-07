@@ -1,24 +1,27 @@
-import { html } from "lithen-tag-functions";
-import { dataPhone } from "./PhoneCard";
+import { DataSignal, html, ref } from "lithen-tag-functions";
 
-export function LinkCard() {
+type LinkCardProps = {
+  show?: DataSignal<boolean>;
+  link: DataSignal<null | ILinks>;
+};
+
+export function LinkCard({ show, link }: LinkCardProps) {
+  const divRef = ref<HTMLDivElement>();
+
   // Images
   const copyIcon = "/icons/copy-link.svg";
   const openInNewIcon = "/icons/open-in-new.svg";
 
-  console.log(dataPhone.get());
+  const urlLink = link.get()?.createLink();
+  const urlLinkAplication = link.get()?.createApplicationLink();
+  console.log(urlLink, urlLinkAplication);
 
-  // const dataPhoneLink = new Links(dataTemp.ddi, dataTemp.phoneNumber);
-  // const urlLink = dataPhoneLink.createLink();
-  // const urlLinkAplication = dataPhoneLink.createApplicationLink();
-
-  // LinkCard
-  return html` <div class="flex flex-col bg-box shadow-xl rounded-xl p-4">
+  return html`<div class="hidden flex-col bg-box shadow-xl rounded-xl p-4">
     <div
       class="flex justify-between items-center bg-zinc-900 rounded-xl p-4 text-font font-semibold "
     >
       <a
-        .href=${"urlLinkAplication"}
+        .href=${urlLinkAplication || ""}
         .target=${"_blank"}
         class="flex flex-row gap-2 items-center hover:opacity-70 transition-opacity"
       >
@@ -27,7 +30,7 @@ export function LinkCard() {
           alt="Open the link"
           class="text-font h-4 hover:opacity-70 transition-opacity"
         />
-        ${"urlLink"}
+        ${urlLink}
       </a>
 
       <button

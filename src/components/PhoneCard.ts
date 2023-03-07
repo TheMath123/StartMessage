@@ -1,11 +1,16 @@
-import { html, ref, signal } from "lithen-tag-functions";
+import { DataSignal, html, ref, signal } from "lithen-tag-functions";
 import { Links } from "../helpers/Links";
 
 import countryCodes from "../assets/CountryCodes.json";
 
-export const dataPhone = signal({});
+type PhoneCardProps = {
+  updateInfoLink: (
+    newValue: ILinks | ((value: ILinks | null) => ILinks | null) | null,
+  ) => void;
+  show: DataSignal<boolean>;
+};
 
-export function PhoneCard() {
+export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
   let isEmpty = signal(true);
   const selectRef = ref<HTMLSelectElement>();
   const inputRef = ref<HTMLInputElement>();
@@ -24,9 +29,10 @@ export function PhoneCard() {
     const ddi = selectRef.el?.value ?? "";
     const phoneNumber = inputRef.el?.value ?? "";
 
-    dataPhone.set(new Links(phoneNumber, ddi));
+    const tempLink = new Links(phoneNumber, ddi);
 
-    console.log(dataPhone.get());
+    updateInfoLink(tempLink);
+    show.set(true);
   };
 
   return html`<div
