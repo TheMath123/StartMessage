@@ -1,11 +1,12 @@
 {
-	"name": "lithen-test",
-	"version": "1.0.0",
+	"name": "start-message",
+	"version": "2.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "main.js",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
+		"preview": "vite preview",
 		"wind": "pnpm tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
 	},
 	"keywords": [],
