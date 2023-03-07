@@ -12,12 +12,10 @@ type PhoneCardProps = {
 
 export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
   const isEmpty = signal(true);
-  const phoneNumber = signal("");
   const selectRef = ref<HTMLSelectElement>();
   const inputRef = ref<HTMLInputElement>();
 
   const checkInput = (event: any) => {
-    phoneNumber.set(event.currentTarget.value);
     const strValue = event.currentTarget.value ?? "";
 
     if (strValue.length <= 8) {
@@ -29,12 +27,17 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
 
   const handlerSubmit = () => {
     const ddi = selectRef.el?.value ?? "";
+    const phoneNumber = inputRef.el?.value ?? "";
 
-    const tempLink = new Links(phoneNumber.get(), ddi);
+    const tempLink = new Links(phoneNumber, ddi);
 
     updateInfoLink(tempLink);
+
     show.set(true);
-    phoneNumber.set("");
+
+    if (inputRef.el) {
+      inputRef.el.value = "";
+    }
   };
 
   return html`<div
@@ -61,7 +64,6 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
         type="number"
         class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold"
         placeholder="Phone Number"
-        value=${phoneNumber}
         on-input=${(event: Event) => checkInput(event)}
       />
 

@@ -12,6 +12,13 @@ export function LinkCard({ link }: LinkCardProps) {
   const urlLink = link.get()?.createLink();
   const urlLinkAplication = link.get()?.createApplicationLink();
 
+  const handlerCopyLink = () => {
+    if (urlLink) {
+      navigator.clipboard.writeText(urlLink);
+    }
+    console.log(navigator.clipboard.readText());
+  };
+
   return html`<div class="flex flex-col bg-box shadow-xl rounded-xl p-4">
     <div
       class="flex justify-between items-center bg-zinc-900 rounded-xl p-4 text-font font-semibold "
@@ -31,6 +38,7 @@ export function LinkCard({ link }: LinkCardProps) {
 
       <button
         class="flex flex-row gap-2 items-center justify-center bg-zinc-700 py-2 px-3 rounded-xl hover:opacity-70 transition-opacity"
+        on-click=${handlerCopyLink}
       >
         <img
           src=${copyIcon}
