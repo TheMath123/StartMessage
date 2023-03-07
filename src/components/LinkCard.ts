@@ -1,22 +1,18 @@
-import { DataSignal, html, ref } from "lithen-tag-functions";
+import { DataSignal, html } from "lithen-tag-functions";
 
 type LinkCardProps = {
-  show?: DataSignal<boolean>;
   link: DataSignal<null | ILinks>;
 };
 
-export function LinkCard({ show, link }: LinkCardProps) {
-  const divRef = ref<HTMLDivElement>();
-
+export function LinkCard({ link }: LinkCardProps) {
   // Images
   const copyIcon = "/icons/copy-link.svg";
   const openInNewIcon = "/icons/open-in-new.svg";
 
   const urlLink = link.get()?.createLink();
   const urlLinkAplication = link.get()?.createApplicationLink();
-  console.log(urlLink, urlLinkAplication);
 
-  return html`<div class="hidden flex-col bg-box shadow-xl rounded-xl p-4">
+  return html`<div class="flex flex-col bg-box shadow-xl rounded-xl p-4">
     <div
       class="flex justify-between items-center bg-zinc-900 rounded-xl p-4 text-font font-semibold "
     >

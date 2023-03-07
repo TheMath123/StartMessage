@@ -19,10 +19,9 @@ export function Home() {
         show,
       }),
       withSignal(show, (state) => {
-        console.log("Show: ", state);
+        const element = LinkCard({ link });
         if (state) {
-          console.log("Ok");
-          return LinkCard({ link });
+          return element;
         }
         return;
       }),

@@ -11,12 +11,14 @@ type PhoneCardProps = {
 };
 
 export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
-  let isEmpty = signal(true);
+  const isEmpty = signal(true);
+  const phoneNumber = signal("");
   const selectRef = ref<HTMLSelectElement>();
   const inputRef = ref<HTMLInputElement>();
 
   const checkInput = (event: any) => {
-    let strValue = event.currentTarget.value ?? "";
+    phoneNumber.set(event.currentTarget.value);
+    const strValue = event.currentTarget.value ?? "";
 
     if (strValue.length <= 8) {
       isEmpty.set(true);
@@ -27,12 +29,12 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
 
   const handlerSubmit = () => {
     const ddi = selectRef.el?.value ?? "";
-    const phoneNumber = inputRef.el?.value ?? "";
 
-    const tempLink = new Links(phoneNumber, ddi);
+    const tempLink = new Links(phoneNumber.get(), ddi);
 
     updateInfoLink(tempLink);
     show.set(true);
+    phoneNumber.set("");
   };
 
   return html`<div
@@ -59,13 +61,14 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
         type="number"
         class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold"
         placeholder="Phone Number"
+        value=${phoneNumber}
         on-input=${(event: Event) => checkInput(event)}
       />
 
       <button
         class="bg-button px-4 py-2 text-font font-bold font-sans rounded-xl hover:opacity-70 transition-opacity disabled:bg-slate-500 disabled:cursor-default disabled:hover:opacity-100"
-        .onclick=${handlerSubmit}
-        .disabled=${isEmpty}
+        on-click=${handlerSubmit}
+        disabled=${isEmpty}
       >
         Create link
       </button>
