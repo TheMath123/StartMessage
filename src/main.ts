@@ -5,7 +5,6 @@ import "./styles/global.css";
 
 router.defineRoutes({
   "/": Home(),
-  "/test": Test(),
   "/not": NotFound(),
   notFound: NotFound(),
 });
