@@ -1,6 +1,5 @@
 import { router } from "lithen-router";
 import { Home, NotFound } from "./page";
-import { Test } from "./page/test";
 import "./styles/global.css";
 
 router.defineRoutes({
