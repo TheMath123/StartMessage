@@ -1,19 +1,38 @@
-# StartMessage
-O StartMessage gera um link para iniciar um conversa no WhatsApp a partir de um número de telefone.
+# StartMessage v2.0
+
+O StartMessage gera um link para iniciar um conversa no WhatsApp a partir de um
+número de telefone.
 
 ## Motivação
-A ideia inicial era uma forma simples de analisar se o número do telefone tinha whatsapp, então nasceu este aplicativo.
 
-## Recursos atuais
- - Criar link para perfil do WhatsApp.
- - Escolher [DDI](https://pt.wikipedia.org/wiki/Discagem_direta_internacional) de outro países.
- 
+A ideia inicial era uma forma simples de analisar se o número do telefone tinha
+whatsapp, então nasceu este aplicativo.
+
+## Novos recursos com v2
+
+- Nova interface (UI)
+- Migração do HTML, CSS, e Javascrip Vanila, para Vite e biblioteca
+  [Lithen](https://www.npmjs.com/package/lithen-tag-functions)
+- Criar links com mensagens
+
+## Recursos
+
+- Criar link para perfil do WhatsApp.
+- Escolher [DDI](https://pt.wikipedia.org/wiki/Discagem_direta_internacional) de
+  outro países.
+
 ## Tecnologias
- - Vanilla JavaScript
- - HTML5
- - CSS3
 
-## O futuro da aplicação
-Migração para Svelte > [branch da migração](https://github.com/TheMath123/StartMessage/tree/migrate-for-svelte).
+- [Vite](https://vitejs.dev/)
+- [Lithen](https://www.npmjs.com/package/lithen-tag-functions)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
-#### [EN-US](README.md)
+## Construção e desenvolvimento
+
+Execute este comandos, passo a passo:
+
+1. `pnpm install`
+2. `pnpm dev`
+
+#### [EN](REAME.md)
