@@ -1,6 +1,6 @@
 import "../components";
 import { html, signal, withSignal } from "lithen-tag-functions";
-import { HeaderApp, LinkCard, PhoneCard } from "../components";
+import { Footer, HeaderApp, LinkCard, PhoneCard } from "../components";
 
 export function Home() {
   const show = signal(false);
@@ -11,7 +11,9 @@ export function Home() {
     }
   });
 
-  return html`<div class="flex flex-col h-full gap-4 max-w-3xl">
+  return html`<div
+    class="flex flex-col h-full gap-4 py-4 px-8 max-w-3xl max-md:py-2 max-md:px-4"
+  >
     ${[
       HeaderApp(),
       PhoneCard({
@@ -24,6 +26,7 @@ export function Home() {
         }
         return;
       }),
+      Footer(),
     ]}
   </div>`;
 }

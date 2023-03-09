@@ -18,6 +18,7 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
   const checkInput = (event: any) => {
     const strValue = event.currentTarget.value ?? "";
 
+    console.log("Tamanho array: ", inputRef.el?.value);
     if (strValue.length <= 8) {
       isEmpty.set(true);
     } else if (isEmpty.get()) {

@@ -2,7 +2,7 @@ import "../components";
 import { html } from "lithen-tag-functions";
 
 export function NotFound() {
-  return html`<div class="grid h-screen place-content-center">
+  return html`<div class="grid h-screen place-content-center px-4">
     <div class="flex flex-col items-center gap-5 max-w-screen-sm">
       <span class="text-9xl">🤔</span>
       <h1 class="text-font font-semibold text-3xl text-center">

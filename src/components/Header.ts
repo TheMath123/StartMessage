@@ -8,13 +8,13 @@ export function HeaderApp() {
   return html`
     <header class="flex flex-col gap-4 flex-wrap" >
         <div class="flex flex-row justify-between items-center ">
-          <div class="flex flex-row justify-start items-center gap-4">
+          <div class="flex flex-row justify-start items-center gap-2">
             <img
               src=${logoIcon}
               alt="Logo do StartMessage, um balão parecido com do WhatsApp, mas com cara fofinha."
-              class="text-font"
+              class="text-font h-12"
             />
-            <h1 class="text-4xl text-font font-bold">Start Message</h1>
+            <h1 class="text-4xl text-button font-bold">Start Message</h1>
           </div>
           
         </div>
