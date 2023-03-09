@@ -13,7 +13,7 @@ so this application was born.
 - New UI
 - Migration of HTML, CSS, and Javascript Vanila, for Vite and
   [Lithen](https://www.npmjs.com/package/lithen-tag-functions) library
-- Criar links com mensagens
+- Create links with messages
 
 ## Current features
 
