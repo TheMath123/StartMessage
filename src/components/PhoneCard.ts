@@ -64,7 +64,7 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
 
       <input
         ref=${inputRef}
-        type="number"
+        type="tel"
         class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold w-full"
         placeholder="Phone Number"
         on-input=${(event: Event) => checkInput(event)}

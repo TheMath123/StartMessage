@@ -23,7 +23,7 @@
     background: #131c21;
   }
 
-  /* Remover setas de adicionar ou remover número */
+  /* Remove add or remove number arrows */
   input::-webkit-inner-spin-button,
   input::-webkit-outer-spin-button {
     -webkit-appearance: none;
