@@ -51,12 +51,12 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
     // clearFields();
   };
 
-  const clearFields = () => {
-    if (phoneNumberInputRef.el && messageInputRef.el) {
-      phoneNumberInputRef.el.value = "";
-      messageInputRef.el.value = "";
-    }
-  };
+  // const clearFields = () => {
+  //   if (phoneNumberInputRef.el && messageInputRef.el) {
+  //     phoneNumberInputRef.el.value = "";
+  //     messageInputRef.el.value = "";
+  //   }
+  // };
 
   return html`<div
     class="flex flex-col bg-box shadow-xl rounded-xl p-4 justify-center imte text-center gap-2"
