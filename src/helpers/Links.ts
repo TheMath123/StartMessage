@@ -11,9 +11,11 @@ export class Links implements ILinks {
     this.ddi = ddi;
     this.phoneNumber = phoneNumberTemp;
     this.message = message;
+    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
   }
 
   get() {
+    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     return {
       ddi: this.ddi,
       phoneNumber: this.phoneNumber,
@@ -22,6 +24,7 @@ export class Links implements ILinks {
   }
 
   createLink(openApp = false) {
+    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     if (openApp) {
       https: return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
     }
@@ -29,6 +32,7 @@ export class Links implements ILinks {
   }
 
   createLinkWithMessage(openApp = false) {
+    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     let link = this.createLink(openApp);
     link += `${openApp ? "&" : "?"}text=${this.message?.replaceAll(" ", "+")}`;
     return link;

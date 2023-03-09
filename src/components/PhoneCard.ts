@@ -41,8 +41,11 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
 
   const handlerSubmit = () => {
     const ddi = selectRef.el?.value ?? "";
+    console.log("handler - ddi: ", ddi);
     const phoneNumber = phoneNumberInputRef.el?.value ?? "";
+    console.log("handler - phoneNumber: ", phoneNumber);
     const message = messageInputRef.el?.value;
+    console.log("handler - message: ", message);
     const link = new Links(phoneNumber, ddi, message);
 
     updateInfoLink(link);
