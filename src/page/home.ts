@@ -11,7 +11,7 @@ export function Home() {
     }
   });
 
-  return html`<div class="flex flex-col gap-4 flex-wrap">
+  return html`<div class="flex flex-col h-full gap-4 max-w-3xl">
     ${[
       HeaderApp(),
       PhoneCard({
@@ -19,9 +19,8 @@ export function Home() {
         show,
       }),
       withSignal(show, (state) => {
-        const element = LinkCard({ link });
         if (state) {
-          return element;
+          return LinkCard({ link });
         }
         return;
       }),

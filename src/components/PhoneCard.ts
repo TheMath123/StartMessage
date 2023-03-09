@@ -43,11 +43,13 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
   return html`<div
     class="flex flex-col bg-box shadow-xl rounded-xl p-4 justify-center imte text-center gap-2 flex-wrap"
   >
-    <div class="flex flex-row justify-between items-center gap-4">
+    <div
+      class="flex flex-row justify-between items-center gap-4 max-md:flex-col"
+    >
       <select
         ref=${selectRef}
         id="ddi"
-        class="text-font px-6 py-3 rounded-xl bg-zinc-900"
+        class="text-font px-6 py-3 rounded-xl bg-zinc-900 w-full"
       >
         ${countryCodes.map((item: CountryCodeProps, index: number) => {
           return html` <option
@@ -62,13 +64,13 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
       <input
         ref=${inputRef}
         type="number"
-        class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold"
+        class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold w-full"
         placeholder="Phone Number"
         on-input=${(event: Event) => checkInput(event)}
       />
 
       <button
-        class="bg-button px-4 py-2 text-font font-bold font-sans rounded-xl hover:opacity-70 transition-opacity disabled:bg-slate-500 disabled:cursor-default disabled:hover:opacity-100"
+        class="bg-button px-4 py-2 text-font font-bold font-sans rounded-xl hover:opacity-70 transition-opacity disabled:bg-slate-500 w-full disabled:cursor-default disabled:hover:opacity-100"
         on-click=${handlerSubmit}
         disabled=${isEmpty}
       >

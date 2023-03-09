@@ -19,9 +19,9 @@ export function LinkCard({ link }: LinkCardProps) {
     console.log(navigator.clipboard.readText());
   };
 
-  return html`<div class="flex flex-col bg-box shadow-xl rounded-xl p-4">
+  return html`<div class="flex flex-col bg-box shadow-xl rounded-xl p-4 w-full">
     <div
-      class="flex justify-between items-center bg-zinc-900 rounded-xl p-4 text-font font-semibold "
+      class="flex justify-between items-center bg-zinc-900 rounded-xl p-4 text-font font-semibold max-md:flex-col gap-2"
     >
       <a
         .href=${urlLinkAplication || ""}
@@ -43,7 +43,7 @@ export function LinkCard({ link }: LinkCardProps) {
         <img
           src=${copyIcon}
           alt="Copy link"
-          class="text-font h-4 hover:opacity-70 transition-opacity"
+          class="text-font h-4 hover:opacity-70 transition-opacity justify-self-end"
         />
         Copy link
       </button>
