@@ -48,6 +48,10 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
     updateInfoLink(link);
     show.set(true);
 
+    // clearFields();
+  };
+
+  const clearFields = () => {
     if (phoneNumberInputRef.el && messageInputRef.el) {
       phoneNumberInputRef.el.value = "";
       messageInputRef.el.value = "";

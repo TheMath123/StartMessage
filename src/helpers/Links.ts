@@ -23,14 +23,14 @@ export class Links implements ILinks {
 
   createLink(openApp = false) {
     if (openApp) {
-      return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
+      https: return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
     }
     return `https://wa.me/${this.ddi}${this.phoneNumber}`;
   }
 
   createLinkWithMessage(openApp = false) {
     let link = this.createLink(openApp);
-    link += `?text=${this.message}`;
+    link += `${openApp ? "&" : "?"}text=${this.message?.replaceAll(" ", "+")}`;
     return link;
   }
 }
