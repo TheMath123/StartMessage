@@ -12,7 +12,7 @@ export function HeaderApp() {
             <img
               src=${logoIcon}
               alt="Logo do StartMessage, um balão parecido com do WhatsApp, mas com cara fofinha."
-              class="text-font h-12"
+              class="text-font h-12 w-12"
             />
             <h1 class="text-4xl text-button font-bold">Start Message</h1>
           </div>

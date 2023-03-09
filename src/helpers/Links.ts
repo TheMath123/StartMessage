@@ -21,11 +21,16 @@ export class Links implements ILinks {
     };
   }
 
-  createLink() {
+  createLink(openApp = false) {
+    if (openApp) {
+      return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
+    }
     return `https://wa.me/${this.ddi}${this.phoneNumber}`;
   }
 
-  createApplicationLink() {
-    return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
+  createLinkWithMessage(openApp = false) {
+    let link = this.createLink(openApp);
+    link += `?text=${this.message}`;
+    return link;
   }
 }

@@ -8,6 +8,6 @@ interface ILinks {
   phoneNumber?: string;
   message?: string;
   get: () => LinksProps | null;
-  createLink: () => string;
-  createApplicationLink: () => string;
+  createLink: (openApp?: boolean) => string;
+  createLinkWithMessage: (openApp?: boolean) => string;
 }

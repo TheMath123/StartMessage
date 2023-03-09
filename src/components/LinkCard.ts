@@ -8,9 +8,16 @@ export function LinkCard({ link }: LinkCardProps) {
   // Images
   const copyIcon = "/icons/copy-link.svg";
   const openInNewIcon = "/icons/open-in-new.svg";
+  let urlLink: string | undefined;
+  let urlLinkAplication;
 
-  const urlLink = link.get()?.createLink();
-  const urlLinkAplication = link.get()?.createApplicationLink();
+  if (link.get()?.message) {
+    urlLink = link.get()?.createLinkWithMessage();
+    urlLinkAplication = link.get()?.createLinkWithMessage(true);
+  } else {
+    urlLink = link.get()?.createLink();
+    urlLinkAplication = link.get()?.createLink(true);
+  }
 
   const handlerCopyLink = () => {
     if (urlLink) {
@@ -37,7 +44,7 @@ export function LinkCard({ link }: LinkCardProps) {
       </a>
 
       <button
-        class="flex flex-row gap-2 items-center justify-center bg-zinc-700 py-2 px-3 rounded-xl w-full hover:opacity-70 transition-opacity"
+        class="flex flex-row gap-2 items-center justify-center bg-zinc-700 py-2 px-3 rounded-xl max-md:w-full hover:opacity-70 transition-opacity"
         on-click=${handlerCopyLink}
       >
         <img
