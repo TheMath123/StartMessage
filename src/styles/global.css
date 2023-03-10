@@ -31,3 +31,22 @@
     appearance: none;
   }
 }
+
+::-webkit-scrollbar {
+  background: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e7e9;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-button {
+  background: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: none;
+}

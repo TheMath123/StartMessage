@@ -5,17 +5,15 @@ export class Links implements ILinks {
 
   constructor(phoneNumber: string, ddi: string, message?: string) {
     let phoneNumberTemp = phoneNumber.replace(/\D/gim, "");
-    if (ddi.length > 4) {
-      throw Error("Invalid DDI character size!");
+    if (ddi === "none") {
+      throw Error("Invalid DDI!");
     }
     this.ddi = ddi;
     this.phoneNumber = phoneNumberTemp;
-    this.message = message;
-    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
+    this.message = message?.trim();
   }
 
   get() {
-    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     return {
       ddi: this.ddi,
       phoneNumber: this.phoneNumber,
@@ -24,7 +22,6 @@ export class Links implements ILinks {
   }
 
   createLink(openApp = false) {
-    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     if (openApp) {
       https: return `whatsapp://send/?phone=${this.ddi}${this.phoneNumber}`;
     }
@@ -32,7 +29,6 @@ export class Links implements ILinks {
   }
 
   createLinkWithMessage(openApp = false) {
-    console.log("Objeto Link", this.ddi, this.phoneNumber, this.message);
     let link = this.createLink(openApp);
     link += `${openApp ? "&" : "?"}text=${this.message?.replaceAll(" ", "+")}`;
     return link;

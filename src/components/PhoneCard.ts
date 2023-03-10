@@ -1,10 +1,4 @@
-import {
-  DataSignal,
-  html,
-  ref,
-  signal,
-  withSignal,
-} from "lithen-tag-functions";
+import { DataSignal, html, signal, withSignal } from "lithen-tag-functions";
 import { Links } from "../helpers/Links";
 
 import countryCodes from "../assets/CountryCodes.json";
@@ -19,34 +13,33 @@ type PhoneCardProps = {
 export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
   const isEmpty = signal(true);
   const messageLength = signal(0);
-  const selectRef = ref<HTMLSelectElement>();
-  const phoneNumberInputRef = ref<HTMLInputElement>();
-  const messageInputRef = ref<HTMLInputElement>();
+  const ddi = signal("");
+  const phoneNumber = signal("");
+  const message = signal("");
 
-  const checkMessageLength = (event: any) => {
-    const strValue = event.currentTarget.value ?? "";
-
-    if (strValue && strValue.length > 0) messageLength.set(strValue.length);
+  const handlerSelectDDI = (event: any) => {
+    ddi.set(event.currentTarget.value);
   };
 
-  const checkInput = (event: any) => {
-    const strValue = event.currentTarget.value ?? "";
+  const handlerChangePhoneNumber = (event: any) => {
+    phoneNumber.set(event.currentTarget.value);
 
-    if (strValue.length <= 8) {
+    if (phoneNumber.get().length <= 8) {
       isEmpty.set(true);
     } else if (isEmpty.get()) {
       isEmpty.set(false);
     }
   };
 
+  const handlerChangeMessage = (event: any) => {
+    message.set(event.currentTarget.value);
+
+    if (message.get() && message.get().length > 0)
+      messageLength.set(message.get().length);
+  };
+
   const handlerSubmit = () => {
-    const ddi = selectRef.el?.value ?? "";
-    console.log("handler - ddi: ", ddi);
-    const phoneNumber = phoneNumberInputRef.el?.value ?? "";
-    console.log("handler - phoneNumber: ", phoneNumber);
-    const message = messageInputRef.el?.value;
-    console.log("handler - message: ", message);
-    const link = new Links(phoneNumber, ddi, message);
+    const link = new Links(phoneNumber.get(), ddi.get(), message.get());
 
     updateInfoLink(link);
     show.set(true);
@@ -70,14 +63,14 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
       <div class="flex flex-col w-full">
         <h2 class="font-semibold self-start">DDI *</h2>
         <select
-          ref=${selectRef}
           id="ddi"
           class="font-semibold text-font px-6 py-3 rounded-xl bg-zinc-900 w-full"
+          on-change=${(event: Event) => handlerSelectDDI(event)}
         >
           ${countryCodes.map((item: CountryCodeProps, index: number) => {
             return html` <option
               value="${item.dial_code}"
-              .selected=${index === 29}
+              .selected=${index === 0}
             >
               ${item.name}
             </option>`;
@@ -88,24 +81,23 @@ export function PhoneCard({ updateInfoLink, show }: PhoneCardProps) {
       <div class="flex flex-col w-full">
         <h2 class="font-semibold self-start">Phone Number *</h2>
         <input
-          ref=${phoneNumberInputRef}
           type="tel"
           class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold w-full"
           placeholder="Ex.: (11)01234-4321 or 123-123-1234"
-          on-input=${(event: Event) => checkInput(event)}
+          on-input=${(event: Event) => handlerChangePhoneNumber(event)}
         />
       </div>
 
       <div class="flex flex-col w-full">
         <h2 class="font-semibold self-start">Message</h2>
-        <input
-          ref=${messageInputRef}
+        <textarea
           type="text"
-          class="text-font px-6 py-3 rounded-xl bg-zinc-900 placeholder:font-semibold w-full"
+          class="text-font px-6 py-3 rounded-xl bg-zinc-900 resize-y min-h-[10%] placeholder:font-semibold w-full"
           placeholder="Ex.: Hello Et Bilu"
           maxlength=${255}
-          on-input=${(event: Event) => checkMessageLength(event)}
-        />
+          rows=4
+          on-input=${(event: Event) => handlerChangeMessage(event)}
+        ></textarea>
         <div class="flex justify-end">
           ${withSignal(messageLength, (strlength) => {
             if (strlength > 1) {

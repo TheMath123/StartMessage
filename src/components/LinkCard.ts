@@ -33,7 +33,7 @@ export function LinkCard({ link }: LinkCardProps) {
       <a
         .href=${urlLinkAplication || ""}
         .target=${"_blank"}
-        class="flex flex-row gap-2 items-center py-4 px-2 hover:opacity-70 transition-opacity"
+        class="flex flex-row gap-2 items-center py-4 px-2 break-all hover:opacity-70 transition-opacity "
       >
         <img
           src=${openInNewIcon}
@@ -44,7 +44,7 @@ export function LinkCard({ link }: LinkCardProps) {
       </a>
 
       <button
-        class="flex flex-row gap-2 items-center justify-center bg-zinc-700 py-2 px-3 rounded-xl max-md:w-full hover:opacity-70 transition-opacity"
+        class="flex flex-row gap-2 items-center justify-center bg-zinc-700 py-2 px-4 rounded-xl max-md:w-full hover:opacity-70 transition-opacity"
         on-click=${handlerCopyLink}
       >
         <img
