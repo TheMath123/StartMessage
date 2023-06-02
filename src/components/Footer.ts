@@ -10,7 +10,7 @@ export function Footer() {
       <span class="font-semibold text-font">
         Created with 💖 by
         <a
-          href="https://matheuspa.me"
+          href="https://matheuspa.com"
           class="underline hover:opacity-70 transition-opacity"
         >
           Matheus Agostinho
