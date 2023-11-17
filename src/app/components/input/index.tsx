@@ -14,7 +14,7 @@ export function Input({ label, ...props }: InputProps) {
         id={label}
         name={label}
         aria-label={label}
-        className="w-full bg-green-800 text-base text-neutral-200 py-2 px-4 rounded-xl placeholder:font-medium placeholder:text-neutral-300 placeholder:text-sm"
+        className="px-6 py-2 rounded-lg bg-input-bg text-text placeholder:text-input-placeholder"
         {...props}
       />
     </div>

@@ -2,10 +2,10 @@ import { Button, Input, Select, Header, Footer } from "./components";
 
 export default function Home() {
   return (
-    <main className="flex flex-col h-screen">
+    <main className="flex flex-col w-full h-screen bg-background">
       <Header />
-      <div className="flex items-start justify-center h-full p-4">
-        <form className="flex flex-col gap-8 p-8 border border-zinc-600 bg-zinc-900 rounded-xl max-w-2xl">
+      <div className="flex flex-grow items-start justify-center p-4">
+        <form className="flex flex-col gap-8 p-8 border border-text border-opacity-20 bg-background rounded-xl">
           <div className="flex flex-col w-full gap-4">
             <Select label="DDI" />
 
