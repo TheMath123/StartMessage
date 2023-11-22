@@ -9,7 +9,7 @@ export function Button({ label, ...props }: ButtonProps) {
     <button
       name={label}
       aria-label={label}
-      className="w-full bg-green-500 text-neutral-800 font-bold text-lg rounded-xl py-2 px-4 hover:bg-green-600 active:bg-green-700"
+      className="w-full bg-green-500 text-neutral-800 font-bold text-lg rounded-lg py-2 px-4 hover:bg-green-600 active:bg-green-700"
       {...props}
     >
       {label}

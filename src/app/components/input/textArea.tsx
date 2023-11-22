@@ -1,22 +1,28 @@
 import { InputHTMLAttributes } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   errorMessage?: string;
   register?: any;
 }
 
-export function Input({ label, errorMessage, register, ...props }: InputProps) {
+export function TextArea({
+  label,
+  errorMessage,
+  register,
+  ...props
+}: TextAreaProps) {
   return (
     <div className="flex flex-col w-full gap-1">
       <label htmlFor={label} className="text-base font-semibold">
         {label}
       </label>
-      <input
+      <textarea
         id={label}
         name={label}
         aria-label={label}
         className="px-6 py-2 rounded-lg bg-input-bg text-text placeholder:text-input-placeholder"
+        maxLength={256}
         {...register}
         {...props}
       />
