@@ -1,8 +1,10 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { formSchema } from "./infra/schemas/formSchema";
+import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { Formatter } from "./utils/Formatter";
 import {
   Button,
   Input,
@@ -12,25 +14,50 @@ import {
   TextArea,
   LinkCard,
 } from "./components";
-import { formSchema } from "./infra/schemas/formSchema";
+import { usePhoneUtils } from "../contexts/phoneContext";
 
-export default function Home() {
+const ddis = [
+  { name: "Selec here", value: "" },
+  { name: "Brazil", value: "+55" },
+];
+
+// eslint-disable-next-line @next/next/no-async-client-component
+export default async function Home() {
   const {
     register,
     handleSubmit,
+    control,
+    setValue,
     formState: { errors },
   } = useForm<IForm>({
     resolver: zodResolver(formSchema),
   });
+  const { fetchDDIs } = usePhoneUtils();
+
+  useEffect(() => {
+    async function fetchDDIsData() {
+      const aws = await fetchDDIs();
+      console.log(aws);
+    }
+
+    fetchDDIsData();
+  }, [fetchDDIs]);
 
   const onSubmit: SubmitHandler<IForm> = async (data) => {
     console.log(data);
   };
 
-  const ddis = {
-    a: "Select here",
-    "+55": "Brazil",
-  };
+  // Handler
+  const fieldPhone = useWatch({
+    control,
+    name: "phone",
+  });
+
+  useEffect(() => {
+    if (fieldPhone) {
+      setValue("phone", Formatter.formatPhoneNumber(fieldPhone));
+    }
+  }, [fieldPhone, setValue]);
 
   return (
     <main className="flex flex-col w-full h-screen justify-between bg-background">

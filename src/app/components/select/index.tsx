@@ -1,3 +1,5 @@
+"use client";
+
 type OptionProps = {
   name: string;
   value?: any;

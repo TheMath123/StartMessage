@@ -1,5 +1,5 @@
 interface IForm {
   ddi?: number;
-  phone?: number;
+  phone?: string;
   message?: string;
 }
