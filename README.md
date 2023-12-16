@@ -1,4 +1,4 @@
-# StartMessage v2.0
+# StartMessage v3.0
 
 StartMessage generates a link to start a WhatsApp conversation from a phone
 number.
@@ -11,8 +11,7 @@ so this application was born.
 ## New features with v2
 
 - New UI
-- Migration of HTML, CSS, and Javascript Vanila, for Vite and
-  [Lithen](https://www.npmjs.com/package/lithen-tag-functions) library
+- Migration for Nextj14 + React + Typescript
 - Create links with messages
 
 ## Current features
@@ -23,10 +22,9 @@ so this application was born.
 
 ## Technologies
 
-- [Vite](https://vitejs.dev/)
-- [Lithen](https://www.npmjs.com/package/lithen-tag-functions)
-- [Tailwindcss](https://tailwindcss.com/)
-- [Typescript](https://www.typescriptlang.org/)
+- [Nextjs14](https://nextjs.org)
+- [Tailwindcss](https://tailwindcss.com)
+- [Typescript](https://www.typescriptlang.org)
 
 ## Build and Development
 
