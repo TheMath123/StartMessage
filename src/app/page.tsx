@@ -18,6 +18,7 @@ import {
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
+  const [erroDDI, setErroDDI] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const {
@@ -35,10 +36,15 @@ export default function Home() {
     async function fetchDDIsData() {
       try {
         const aws = await fetchDDIs();
-        if (aws[0].name !== "success - undefined") setCountries(aws);
+        if (aws[0].name !== "success - undefined") {
+          setCountries(aws);
+        } else {
+          setErroDDI(true);
+        }
         setLoading(false);
       } catch (error) {
         console.error(error);
+        setErroDDI(true);
         setLoading(false);
       }
     }
@@ -72,13 +78,25 @@ export default function Home() {
           className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg"
         >
           <div className="flex flex-col w-full gap-4">
-            <Select
-              options={countries}
-              label="DDI"
-              register={register("ddi")}
-              loading={loading}
-              errorMessage={errors.ddi?.message}
-            />
+            {erroDDI ? (
+              <Input
+                label="DDI"
+                tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
+                placeholder="+123"
+                type="number"
+                register={register("ddi")}
+                errorMessage={errors.ddi?.message}
+              />
+            ) : (
+              <Select
+                options={countries}
+                label="DDI"
+                tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
+                register={register("ddi")}
+                loading={loading}
+                errorMessage={errors.ddi?.message}
+              />
+            )}
 
             <Input
               label="Phone"

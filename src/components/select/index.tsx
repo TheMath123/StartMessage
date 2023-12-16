@@ -1,9 +1,5 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  SelectHTMLAttributes,
-} from "react";
+import React, { useState, SelectHTMLAttributes } from "react";
+import Image from "next/image";
 import { cn } from "@/utils/cn";
 
 type OptionProps = {
@@ -14,6 +10,7 @@ type OptionProps = {
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: OptionProps[];
   label: string;
+  tooltip?: string;
   errorMessage?: string;
   loading?: boolean;
   register?: any;
@@ -22,14 +19,50 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 export function Select({
   options,
   label,
+  tooltip,
   errorMessage,
   loading = false,
   register,
 }: SelectProps) {
+  const [openTooltip, setOpenTooltip] = useState(false);
+
   return (
     <div className="flex flex-col w-full gap-1 relative">
-      <label htmlFor={label} className="text-base font-semibold">
+      <label
+        htmlFor={label}
+        className="text-base font-semibold flex flex-row gap-2 items-center"
+      >
         {label}
+        {tooltip && (
+          <div className="flex relative w-fit">
+            <span
+              className={cn(
+                "h-4 w-4 cursor-pointer",
+                "hover:opacity-75 active:opacity-50",
+                "transition-all duration-300",
+              )}
+              onClick={() => setOpenTooltip(!openTooltip)}
+            >
+              <Image
+                src="/icons/ic_round-info.svg"
+                alt="info"
+                width={16}
+                height={16}
+              />
+            </span>
+            {openTooltip && (
+              <div
+                onClick={() => setOpenTooltip(false)}
+                className={cn(
+                  "absolute top-5",
+                  "flex bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
+                )}
+              >
+                {tooltip}
+              </div>
+            )}
+          </div>
+        )}
       </label>
       {loading ? (
         <div className="h-12 rounded bg-input-bg w-full flex items-center animate-pulse border border-neutral-700"></div>
@@ -41,6 +74,7 @@ export function Select({
           disabled={loading}
           className={cn(
             "px-6 py-3 w-full h-12 rounded bg-input-bg text-white placeholder:text-neutral-300 border",
+            "transition-all duration-300",
             "focus:border focus:border-primary",
             errorMessage && errorMessage.length > 1
               ? "border border-red-700"
