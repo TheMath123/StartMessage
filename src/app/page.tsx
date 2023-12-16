@@ -80,7 +80,7 @@ export default function Home() {
           <div className="flex flex-col w-full gap-4">
             {erroDDI ? (
               <Input
-                label="DDI"
+                label="IDD"
                 tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
                 placeholder="+123"
                 type="tel"
@@ -90,7 +90,7 @@ export default function Home() {
             ) : (
               <Select
                 options={countries}
-                label="DDI"
+                label="IDD"
                 tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
                 register={register("ddi")}
                 loading={loading}
