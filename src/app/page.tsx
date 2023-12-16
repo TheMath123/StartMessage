@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { formSchema } from "./infra/schemas/formSchema";
+import { useEffect, useState } from "react";
+import { formSchema } from "@/infra/schemas/formSchema";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Formatter } from "./utils/Formatter";
+import { Formatter } from "@/utils/Formatter";
+import { usePhoneUtils } from "@/contexts/phoneContext";
 import {
   Button,
   Input,
@@ -13,16 +14,12 @@ import {
   Footer,
   TextArea,
   LinkCard,
-} from "./components";
-import { usePhoneUtils } from "../contexts/phoneContext";
+} from "@/components";
 
-const ddis = [
-  { name: "Selec here", value: "" },
-  { name: "Brazil", value: "+55" },
-];
+export default function Home() {
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-// eslint-disable-next-line @next/next/no-async-client-component
-export default async function Home() {
   const {
     register,
     handleSubmit,
@@ -30,22 +27,27 @@ export default async function Home() {
     setValue,
     formState: { errors },
   } = useForm<IForm>({
+    defaultValues: {
+      ddi: "+55",
+    },
     resolver: zodResolver(formSchema),
   });
-  const { fetchDDIs } = usePhoneUtils();
+  const { urlCopy, urlOpen, fetchDDIs, createLink } = usePhoneUtils();
 
   useEffect(() => {
     async function fetchDDIsData() {
-      const aws = await fetchDDIs();
-      console.log(aws);
+      try {
+        const aws = await fetchDDIs();
+        if (aws[0].name !== "success - undefined") setCountries(aws);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
     }
 
     fetchDDIsData();
   }, [fetchDDIs]);
-
-  const onSubmit: SubmitHandler<IForm> = async (data) => {
-    console.log(data);
-  };
 
   // Handler
   const fieldPhone = useWatch({
@@ -59,6 +61,10 @@ export default async function Home() {
     }
   }, [fieldPhone, setValue]);
 
+  const onSubmit: SubmitHandler<IForm> = (data) => {
+    createLink(data);
+  };
+
   return (
     <main className="flex flex-col w-full h-screen justify-between bg-background">
       <Header />
@@ -69,9 +75,10 @@ export default async function Home() {
         >
           <div className="flex flex-col w-full gap-4">
             <Select
-              options={ddis}
+              options={countries}
               label="DDI"
               register={register("ddi")}
+              loading={loading}
               errorMessage={errors.ddi?.message}
             />
 
@@ -95,11 +102,7 @@ export default async function Home() {
           <Button label="Create Link" type="submit" />
         </form>
 
-        <LinkCard
-          url={
-            "https://wa.me/+35512312312321?text=Olá+tudo+bem,+eae+como+vai?+Espero+que+esteja+tudo+bem,+podemos+conversar"
-          }
-        />
+        {urlCopy && urlOpen && <LinkCard urlCopy={urlCopy} urlOpen={urlOpen} />}
       </div>
       <Footer />
     </main>

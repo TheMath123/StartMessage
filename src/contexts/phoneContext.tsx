@@ -1,14 +1,19 @@
 "use client";
 
 import { ReactNode, createContext, useContext, useState } from "react";
+import { fetchCountries } from "@/services/countries";
+import { transformData } from "@/utils/convertData";
+import { Links } from "../utils/Links";
 
 interface IChildrenProps {
   children: ReactNode;
 }
 
-// Context - values
 interface IPhoneContextProps {
+  urlOpen?: string;
+  urlCopy?: string;
   fetchDDIs: () => Promise<any>;
+  createLink: (data: LinksObjectProps) => void;
 }
 
 // Context - In case you need to set default values within context
@@ -16,16 +21,27 @@ export const PhoneContext = createContext({} as IPhoneContextProps);
 
 // Context Provider
 export function PhoneContextProvider({ children }: IChildrenProps) {
-  const fetchDDIs = async () => {
-    const data = await fetch(
-      "http://apilayer.net/api/countries?access_key=323f683ca9910d7867ff11c41cde5e69",
-    );
-    const response = await data.json();
-    return response;
-  };
+  const [urlOpen, setUrlOpen] = useState("");
+  const [urlCopy, setUrlCopy] = useState("");
+
+  async function fetchDDIs() {
+    const data = await fetchCountries();
+    const convertedObjData = transformData(data);
+    return convertedObjData;
+  }
+
+  function createLink(data: LinksObjectProps) {
+    const link = new Links(data);
+
+    const linkOpen = link.createLink({ openApp: true });
+    const linkCopy = link.createLink();
+
+    setUrlCopy(linkCopy);
+    setUrlOpen(linkOpen);
+  }
 
   return (
-    <PhoneContext.Provider value={{ fetchDDIs }}>
+    <PhoneContext.Provider value={{ urlOpen, urlCopy, fetchDDIs, createLink }}>
       {children}
     </PhoneContext.Provider>
   );

@@ -21,7 +21,7 @@ export function TextArea({
         id={label}
         name={label}
         aria-label={label}
-        className="px-6 py-2 rounded-lg bg-input-bg text-text placeholder:text-input-placeholder"
+        className="px-6 py-3 rounded bg-input-bg text-white placeholder:text-neutral-300"
         maxLength={256}
         {...register}
         {...props}
