@@ -55,7 +55,7 @@ export function Select({
                 onClick={() => setOpenTooltip(false)}
                 className={cn(
                   "absolute top-5",
-                  "flex bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
+                  "flex w-fit bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
                 )}
               >
                 {tooltip}

@@ -70,7 +70,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col w-full h-screen justify-between bg-background">
+    <main className="flex flex-col w-full h-screen justify-between bg-background overflow-hidden">
       <Header />
       <div className="flex flex-col flex-grow items-center justify-start p-4 gap-4">
         <form
@@ -83,7 +83,7 @@ export default function Home() {
                 label="DDI"
                 tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
                 placeholder="+123"
-                type="number"
+                type="tel"
                 register={register("ddi")}
                 errorMessage={errors.ddi?.message}
               />

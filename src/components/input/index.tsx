@@ -26,7 +26,7 @@ export function Input({
       >
         {label}
         {tooltip && (
-          <div className="flex relative w-fit">
+          <div className="flex relative">
             <span
               className={cn(
                 "h-4 w-4 cursor-pointer",
@@ -46,11 +46,10 @@ export function Input({
               <div
                 onClick={() => setOpenTooltip(false)}
                 className={cn(
-                  "absolute top-5",
-                  "flex bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
+                  "absolute top-5 w-[200px] bg-neutral-700 px-2 py-1 rounded border border-neutral-400 break-all",
                 )}
               >
-                {tooltip}
+                <p>{tooltip}</p>
               </div>
             )}
           </div>
