@@ -18,10 +18,11 @@ export function Input({ label, errorMessage, register, ...props }: InputProps) {
         name={label}
         aria-label={label}
         className={cn(
-          "px-6 py-3 rounded bg-input-bg text-white placeholder:text-neutral-300",
+          "px-6 py-3 rounded bg-input-bg text-white placeholder:text-neutral-300 border",
+
           "focus:border-primary focus:outline-0",
           errorMessage && errorMessage.length > 1
-            ? "border border-red-700"
+            ? "border-red-700"
             : "border-neutral-700",
         )}
         {...register}
