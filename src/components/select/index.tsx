@@ -1,4 +1,9 @@
-import { SelectHTMLAttributes } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  SelectHTMLAttributes,
+} from "react";
 import { cn } from "@/utils/cn";
 
 type OptionProps = {
@@ -21,30 +26,15 @@ export function Select({
   loading = false,
   register,
 }: SelectProps) {
-  function* generateOptions(options: OptionProps[]) {
-    for (let [index, item] of options.entries()) {
-      yield (
-        <option
-          selected={index === 0}
-          key={`dpInput${item.name.trim()}#${index}`}
-          value={item.value}
-        >
-          {item.name}
-        </option>
-      );
-    }
-  }
-
   return (
     <div className="flex flex-col w-full gap-1 relative">
       <label htmlFor={label} className="text-base font-semibold">
-        DDI
+        {label}
       </label>
       {loading ? (
         <div className="h-12 rounded bg-input-bg w-full flex items-center animate-pulse border border-neutral-700"></div>
       ) : (
         <select
-          {...register}
           id={label}
           name={label}
           aria-label={label}
@@ -56,8 +46,16 @@ export function Select({
               ? "border border-red-700"
               : "border-neutral-700",
           )}
+          {...register}
         >
-          {[...generateOptions(options)]}
+          {options.map((item, index) => (
+            <option
+              key={`dpInput${item.name.trim()}#${index}`}
+              value={item.value}
+            >
+              {item.name}
+            </option>
+          ))}
         </select>
       )}
       <div className="absolute z-10 right-4 top-10 text-neutral-300">▾</div>

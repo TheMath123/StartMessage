@@ -27,9 +27,6 @@ export default function Home() {
     setValue,
     formState: { errors },
   } = useForm<IForm>({
-    defaultValues: {
-      ddi: "+55",
-    },
     resolver: zodResolver(formSchema),
   });
   const { urlCopy, urlOpen, fetchDDIs, createLink } = usePhoneUtils();
@@ -62,6 +59,7 @@ export default function Home() {
   }, [fieldPhone, setValue]);
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
+    console.log(data.ddi);
     createLink(data);
   };
 
