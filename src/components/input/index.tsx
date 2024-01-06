@@ -33,7 +33,8 @@ export function Input({
                 "hover:opacity-75 active:opacity-50",
                 "transition-all duration-300",
               )}
-              onClick={() => setOpenTooltip(!openTooltip)}
+              onMouseEnter={() => setOpenTooltip(true)}
+              onMouseLeave={() => setOpenTooltip(false)}
             >
               <Image
                 src="/icons/ic_round-info.svg"
@@ -44,7 +45,6 @@ export function Input({
             </span>
             {openTooltip && (
               <div
-                onClick={() => setOpenTooltip(false)}
                 className={cn(
                   "absolute top-5 w-[200px] bg-neutral-700 px-2 py-1 rounded border border-neutral-400 break-all",
                 )}
