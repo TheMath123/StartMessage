@@ -43,7 +43,7 @@ export default function RootLayout({
           property="og:description"
           content="StartMessage generates a link to start a WhatsApp conversation from a phone number."
         />
-        <meta property="og:image" content="/start-message-logo.svg" />
+        <meta property="og:image" content="/start-message.png" />
 
         <link rel="icon" href="/web/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/web/apple-touch-icon.png" />
