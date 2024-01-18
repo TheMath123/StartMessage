@@ -1,18 +1,21 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useState } from "react";
-import { fetchCountries } from "@/services/countries";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { transformData } from "@/utils/convertData";
 import { Links } from "../utils/Links";
+import countriesData from "@/assets/countries.json"
+import { fetchCountries } from "@/services/countries";
 
 interface IChildrenProps {
   children: ReactNode;
 }
 
+type Countries = CountryData[]
+
 interface IPhoneContextProps {
   urlOpen?: string;
   urlCopy?: string;
-  fetchDDIs: () => Promise<any>;
+  countries?:Countries;
   createLink: (data: LinksObjectProps) => void;
 }
 
@@ -21,8 +24,15 @@ export const PhoneContext = createContext({} as IPhoneContextProps);
 
 // Context Provider
 export function PhoneContextProvider({ children }: IChildrenProps) {
+  const [countries, setCountries] = useState<Countries>()
   const [urlOpen, setUrlOpen] = useState("");
   const [urlCopy, setUrlCopy] = useState("");
+
+  useEffect(() => {
+    if(countriesData){
+      setCountries(transformData(countriesData))
+    }
+  }, []);
 
   async function fetchDDIs() {
     const data = await fetchCountries();
@@ -41,7 +51,7 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
   }
 
   return (
-    <PhoneContext.Provider value={{ urlOpen, urlCopy, fetchDDIs, createLink }}>
+    <PhoneContext.Provider value={{ urlOpen, urlCopy, countries, createLink }}>
       {children}
     </PhoneContext.Provider>
   );

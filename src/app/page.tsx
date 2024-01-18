@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formSchema } from "@/infra/schemas/formSchema";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,10 +17,6 @@ import {
 } from "@/components";
 
 export default function Home() {
-  const [countries, setCountries] = useState([]);
-  const [erroDDI, setErroDDI] = useState(false);
-  const [loading, setLoading] = useState(true);
-
   const {
     register,
     handleSubmit,
@@ -30,29 +26,9 @@ export default function Home() {
   } = useForm<IForm>({
     resolver: zodResolver(formSchema),
   });
-  const { urlCopy, urlOpen, fetchDDIs, createLink } = usePhoneUtils();
+  const { urlCopy, urlOpen,  createLink, countries } = usePhoneUtils();
 
-  useEffect(() => {
-    async function fetchDDIsData() {
-      try {
-        const aws = await fetchDDIs();
-        if (aws[0].name !== "success - undefined") {
-          setCountries(aws);
-        } else {
-          setErroDDI(true);
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setErroDDI(true);
-        setLoading(false);
-      }
-    }
-
-    fetchDDIsData();
-  }, [fetchDDIs]);
-
-  // Handler
+  // Handler Phone Number
   const fieldPhone = useWatch({
     control,
     name: "phone",
@@ -78,28 +54,13 @@ export default function Home() {
           className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg"
         >
           <div className="flex flex-col w-full gap-4">
-            {erroDDI ? (
-              <Input
-                label="IDD"
-                tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
-                placeholder="+123"
-                inputMode="tel"
-                type="text"
-                register={register("ddi")}
-                errorMessage={errors.ddi?.message}
-              />
-            ) : (
-              <Select
-                options={countries}
-                label="IDD"
-                tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
-                register={register("ddi")}
-                
-                loading={loading}
-                errorMessage={errors.ddi?.message}
-              />
-            )}
-
+            {countries ? <Select
+              options={countries}
+              label="IDD"
+              tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
+              register={register("ddi")}
+              errorMessage={errors.ddi?.message}
+            /> : null}
             <Input
               label="Phone"
               placeholder="11912341234"
