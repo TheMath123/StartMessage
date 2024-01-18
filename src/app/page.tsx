@@ -83,7 +83,8 @@ export default function Home() {
                 label="IDD"
                 tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
                 placeholder="+123"
-                type="tel"
+                inputMode="tel"
+                type="text"
                 register={register("ddi")}
                 errorMessage={errors.ddi?.message}
               />
@@ -93,6 +94,7 @@ export default function Home() {
                 label="IDD"
                 tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
                 register={register("ddi")}
+                
                 loading={loading}
                 errorMessage={errors.ddi?.message}
               />
@@ -101,7 +103,9 @@ export default function Home() {
             <Input
               label="Phone"
               placeholder="11912341234"
-              type="tel"
+              type="text"
+              inputMode="tel"
+              maxLength={18}
               register={register("phone")}
               errorMessage={errors.phone?.message}
             />
@@ -109,7 +113,8 @@ export default function Home() {
             <TextArea
               label="Message"
               placeholder="Hello world!"
-              type="tel"
+              type="text"
+              inputMode="text"
               register={register("message")}
               errorMessage={errors.message?.message}
             />
