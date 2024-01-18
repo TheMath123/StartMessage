@@ -1,8 +1,8 @@
-const API_LAYER_KEY = process.env.API_LAYER_KEY;
+import { env } from "@/env";
 
 export async function fetchCountries() {
   const data = await fetch(
-    `http://apilayer.net/api/countries?access_key=${API_LAYER_KEY}`,
+    `http://apilayer.net/api/countries?access_key=${env.API_LAYER_KEY}`,
   );
   const response = await data.json();
   return response;
