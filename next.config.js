@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  env: {
-    API_LAYER_KEY: process.env.API_LAYER_KEY,
-  },
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
