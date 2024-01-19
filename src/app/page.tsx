@@ -17,6 +17,8 @@ import {
 } from "@/components";
 
 export default function Home() {
+  const { urlCopy, urlOpen, createLink, countries, verifyCountryIndex } = usePhoneUtils();
+
   const {
     register,
     handleSubmit,
@@ -26,7 +28,6 @@ export default function Home() {
   } = useForm<IForm>({
     resolver: zodResolver(formSchema),
   });
-  const { urlCopy, urlOpen, createLink, countries, verifyCountryIndex } = usePhoneUtils();
 
   // Handler Phone Number
   const fieldPhone = useWatch({
@@ -41,7 +42,6 @@ export default function Home() {
   }, [fieldPhone, setValue]);
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    console.log(data.ddi);
     createLink(data);
   };
 

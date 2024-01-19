@@ -82,6 +82,7 @@ export function Select({
               ? "border border-red-700"
               : "border-neutral-700",
           )}
+          defaultValue={indexSelected ? options[indexSelected]: null}
           {...register}
         >
           {options.map((item, index) => (
