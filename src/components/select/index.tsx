@@ -8,6 +8,7 @@ type OptionProps = {
 };
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  indexSelected?: number | null;
   options: OptionProps[];
   label: string;
   tooltip?: string;
@@ -17,6 +18,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export function Select({
+  indexSelected,
   options,
   label,
   tooltip,
@@ -84,6 +86,7 @@ export function Select({
         >
           {options.map((item, index) => (
             <option
+              selected={index === indexSelected}
               key={`dpInput${item.name.trim()}#${index}`}
               value={item.value}
             >

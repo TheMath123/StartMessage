@@ -26,7 +26,7 @@ export default function Home() {
   } = useForm<IForm>({
     resolver: zodResolver(formSchema),
   });
-  const { urlCopy, urlOpen,  createLink, countries } = usePhoneUtils();
+  const { urlCopy, urlOpen, createLink, countries, verifyCountryIndex } = usePhoneUtils();
 
   // Handler Phone Number
   const fieldPhone = useWatch({
@@ -59,6 +59,7 @@ export default function Home() {
               label="IDD"
               tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
               register={register("ddi")}
+              indexSelected={verifyCountryIndex()}
               errorMessage={errors.ddi?.message}
             /> : null}
             <Input
