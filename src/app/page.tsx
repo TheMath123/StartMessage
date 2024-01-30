@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { formSchema } from "@/infra/schemas/formSchema";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +18,10 @@ import {
 } from "@/components";
 
 export default function Home() {
-  const { urlCopy, urlOpen, createLink, countries, verifyCountryIndex } = usePhoneUtils();
+  const { urlCopy, urlOpen, createLink, countries } = usePhoneUtils();
+
+  const searchParams = useSearchParams()
+  const country = searchParams.get('country')
 
   const {
     register,
@@ -26,6 +30,10 @@ export default function Home() {
     setValue,
     formState: { errors },
   } = useForm<IForm>({
+    values:{
+      ddi: countries?.find(item=> item.country === country)?.value ?? '',
+      phone: '',
+    },
     resolver: zodResolver(formSchema),
   });
 
@@ -34,7 +42,6 @@ export default function Home() {
     control,
     name: "phone",
   });
-
   useEffect(() => {
     if (fieldPhone) {
       setValue("phone", Formatter.formatPhoneNumber(fieldPhone));
@@ -42,7 +49,7 @@ export default function Home() {
   }, [fieldPhone, setValue]);
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
-    createLink(data);
+      createLink(data);
   };
 
   return (
@@ -59,7 +66,6 @@ export default function Home() {
               label="IDD"
               tooltip="International Direct Dialing - https://en.wikipedia.org/wiki/International_direct_dialing"
               register={register("ddi")}
-              indexSelected={verifyCountryIndex()}
               errorMessage={errors.ddi?.message}
             /> : null}
             <Input

@@ -1,6 +1,7 @@
 import React, { useState, SelectHTMLAttributes } from "react";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
+import { Tooltip } from "../tooltip";
 
 type OptionProps = {
   name: string;
@@ -8,7 +9,6 @@ type OptionProps = {
 };
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  indexSelected?: number | null;
   options: OptionProps[];
   label: string;
   tooltip?: string;
@@ -18,7 +18,6 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export function Select({
-  indexSelected,
   options,
   label,
   tooltip,
@@ -36,34 +35,7 @@ export function Select({
       >
         {label}
         {tooltip && (
-          <div className="flex relative w-fit">
-            <span
-              className={cn(
-                "h-4 w-4 cursor-pointer",
-                "hover:opacity-75 active:opacity-50",
-                "transition-all duration-300",
-              )}
-              onClick={() => setOpenTooltip(!openTooltip)}
-            >
-              <Image
-                src="/icons/ic_round-info.svg"
-                alt="info"
-                width={16}
-                height={16}
-              />
-            </span>
-            {openTooltip && (
-              <div
-                onClick={() => setOpenTooltip(false)}
-                className={cn(
-                  "absolute top-5",
-                  "flex w-fit bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
-                )}
-              >
-                {tooltip}
-              </div>
-            )}
-          </div>
+         <Tooltip label={tooltip}/>
         )}
       </label>
       {loading ? (
@@ -82,12 +54,10 @@ export function Select({
               ? "border border-red-700"
               : "border-neutral-700",
           )}
-          defaultValue={indexSelected ? options[indexSelected]: null}
           {...register}
         >
           {options.map((item, index) => (
             <option
-              selected={index === indexSelected}
               key={`dpInput${item.name.trim()}#${index}`}
               value={item.value}
             >
@@ -97,7 +67,7 @@ export function Select({
         </select>
       )}
       <div className="absolute z-10 right-4 top-10 text-neutral-300">▾</div>
-      {errorMessage && errorMessage.length > 1 && <span>{errorMessage}</span>}
+      {errorMessage && errorMessage.length > 1 && <span  className="text-red-700 text-center">{errorMessage}</span>}
     </div>
   );
 }

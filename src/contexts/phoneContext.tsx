@@ -6,6 +6,7 @@ import { Links } from "../utils/Links";
 import countriesData from "@/assets/countries.json"
 import { fetchCountries } from "@/services/countries";
 import { fetchCountry } from "@/services/ipinfo";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface IChildrenProps {
   children: ReactNode;
@@ -33,13 +34,27 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
 
   useEffect(() => {
     if(countriesData){
-      setCountries(transformData(countriesData))
+      setCountries([
+      {
+        name:'Choose your country',
+        value: '',
+        country: ''},
+      ...transformData(countriesData)
+    ])
     }
   }, []);
-
+  
+  const router = useRouter()
+  
   useEffect(() => {
     const fetchUserData = async () => {
+     
       const data = await fetchCountry();
+
+      if(data.country){
+        router.replace(`/?country=${data.country}`)
+      }
+      
       setUserInfo(data);
     }
 
