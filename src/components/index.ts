@@ -10,4 +10,8 @@ export * from "./header/index";
 
 export * from "./footer/index";
 
+export * from "./tooltip";
+
+export * from "./footer/index";
+
 export * from "./link_card/index";

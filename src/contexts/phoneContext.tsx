@@ -6,7 +6,7 @@ import { Links } from "../utils/Links";
 import countriesData from "@/assets/countries.json"
 import { fetchCountries } from "@/services/countries";
 import { fetchCountry } from "@/services/ipinfo";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface IChildrenProps {
   children: ReactNode;
@@ -45,6 +45,7 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
   }, []);
   
   const router = useRouter()
+  const pathName = usePathname()
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -52,14 +53,14 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
       const data = await fetchCountry();
 
       if(data.country){
-        router.replace(`/?country=${data.country}`)
+        router.replace(`${pathName}/?country=${data.country}`)
       }
       
       setUserInfo(data);
     }
 
     fetchUserData()
-  }, []);
+  }, [pathName, router]);
 
   function verifyCountryIndex(){
     let countryIndex = null;
@@ -69,11 +70,6 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
     return countryIndex;
   }
 
-  async function fetchDDIs() {
-    const data = await fetchCountries();
-    const convertedObjData = transformData(data);
-    return convertedObjData;
-  }
 
   function createLink(data: LinksObjectProps) {
     const link = new Links(data);

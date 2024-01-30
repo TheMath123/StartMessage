@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { formSchema } from "@/infra/schemas/formSchema";
 import { SubmitHandler, useForm, useWatch } from "react-hook-form";
@@ -16,14 +16,14 @@ import {
   TextArea,
   LinkCard,
 } from "@/components";
+import { SkeletonCard } from "@/components/loading/SkeletonCard";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
   const { urlCopy, urlOpen, createLink, countries } = usePhoneUtils();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const params = useParams<{ phone: string }>()
-
-  console.log('params',params.phone);
-
   const searchParams = useSearchParams()
   const country = searchParams.get('country')
 
@@ -49,7 +49,11 @@ export default function Home() {
   useEffect(() => {
     if (fieldPhone) {
       setValue("phone", Formatter.formatPhoneNumber(fieldPhone));
+      handleSubmit(onSubmit)();
+      setLoading(false);
     }
+    setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fieldPhone, setValue]);
 
   const onSubmit: SubmitHandler<IForm> = (data) => {
@@ -60,7 +64,8 @@ export default function Home() {
     <main className="flex flex-col w-full h-screen justify-between bg-background overflow-hidden">
       <Header />
       <div className="flex flex-col flex-grow items-center justify-start p-4 gap-4">
-        <form
+
+        {loading ? <SkeletonCard /> : <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg"
         >
@@ -92,8 +97,8 @@ export default function Home() {
             />
           </div>
 
-          <Button label="Create Link" type="submit" />
-        </form>
+          <Button label="Create Link" type="submit" ref={buttonRef}/>
+        </form>}
 
         {urlCopy && urlOpen && <LinkCard urlCopy={urlCopy} urlOpen={urlOpen} />}
       </div>
