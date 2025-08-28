@@ -1,98 +1,98 @@
 @import "tailwindcss";
 
 @theme {
-	--color-primary: #21c063;
-	--color-background: #0b141a;
-	--color-text: #e9edef;
-	--color-input-bg: #1e1e1e;
-	--color-input-placeholder: #8696a0;
+  --color-primary: oklch(0.7102 0.1817 151.18);
+  --color-background: oklch(0.1854 0.0182 238.21);
+  --color-text: oklch(0.9436 0.0051 228.82);
+  --color-input-bg: oklch(0.235 0 0);
+  --color-input-placeholder: oklch(0.6637 0.0236 235.2);
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
-	}
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-background: var(--color-background);
+  --color-text: oklch(0.9436 0.0051 228.82);
+  --color-input-bg: oklch(0.235 0 0);
+  --color-input-placeholder: oklch(0.6637 0.0236 235.2);
 }
 
 :root {
-	--foreground-rgb: 0, 0, 0;
-	--background-start-rgb: 214, 219, 220;
-	--background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-rgb: 255, 255, 255;
-		--background-start-rgb: 0, 0, 0;
-		--background-end-rgb: 0, 0, 0;
-	}
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(
-			to bottom,
-			transparent,
-			rgb(var(--background-end-rgb))
-		)
-		rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 /* Remove browser styles default, how to safari and mozilla */
 input {
-	-webkit-user-select: text; /* Chrome, Opera, Safari */
-	-moz-user-select: text; /* Firefox 2+ */
-	-ms-user-select: text; /* IE 10+ */
-	user-select: text; /* Standard syntax */
+  -webkit-user-select: text; /* Chrome, Opera, Safari */
+  -moz-user-select: text; /* Firefox 2+ */
+  -ms-user-select: text; /* IE 10+ */
+  user-select: text; /* Standard syntax */
 }
 
 input[type="number"] {
-	-moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 select {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	user-select: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  user-select: none;
 }
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
-	scrollbar-width: auto;
-	scrollbar-color: var(--color-primary) transparent;
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-primary) transparent;
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-	width: 16px;
+  width: 16px;
 }
 
 *::-webkit-scrollbar-track {
-	background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: var(--color-primary);
-	border-radius: 16px;
-	border: 4px solid transparent;
+  background-color: var(--color-primary);
+  border-radius: 16px;
+  border: 4px solid transparent;
 }

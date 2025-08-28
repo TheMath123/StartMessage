@@ -71,7 +71,7 @@ export function Input({
 				{...props}
 			/>
 			{errorMessage && errorMessage.length > 1 && (
-				<span className="text-red-700 text-center">{errorMessage}</span>
+				<span className="text-red-700">{errorMessage}</span>
 			)}
 		</div>
 	);
