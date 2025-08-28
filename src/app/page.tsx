@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <main className="flex flex-col w-full h-screen justify-between bg-background overflow-hidden">
       <Header />
-      <div className="flex flex-col flex-grow items-center justify-start p-4 gap-4">
+      <div className="flex flex-col grow items-center justify-start p-4 gap-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg"

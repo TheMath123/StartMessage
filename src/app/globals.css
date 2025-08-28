@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #21c063;
+  --color-background: #0b141a;
+  --color-text: #e9edef;
+  --color-input-bg: #1e1e1e;
+  --color-input-placeholder: #8696a0;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -55,7 +79,7 @@ select {
 /* Firefox */
 * {
   scrollbar-width: auto;
-  scrollbar-color: theme("colors.primary") transparent;
+  scrollbar-color: var(--color-primary) transparent;
 }
 
 /* Chrome, Edge, and Safari */
@@ -68,7 +92,7 @@ select {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: theme("colors.primary");
+  background-color: var(--color-primary);
   border-radius: 16px;
   border: 4px solid transparent;
 }

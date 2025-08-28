@@ -39,7 +39,7 @@ export function Select({
         )}
       </label>
       {loading ? (
-        <div className="h-12 rounded bg-input-bg w-full flex items-center animate-pulse border border-neutral-700"></div>
+        <div className="h-12 rounded-sm bg-input-bg w-full flex items-center animate-pulse border border-neutral-700"></div>
       ) : (
         <select
           id={label}
@@ -47,7 +47,7 @@ export function Select({
           aria-label={label}
           disabled={loading}
           className={cn(
-            "px-6 py-3 w-full h-12 rounded bg-input-bg text-white placeholder:text-neutral-300 border",
+            "px-6 py-3 w-full h-12 rounded-sm bg-input-bg text-white placeholder:text-neutral-300 border",
             "transition-all duration-300",
             "focus:border focus:border-primary",
             errorMessage && errorMessage.length > 1

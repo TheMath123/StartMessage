@@ -40,7 +40,7 @@ export function LinkCard({ urlCopy, urlOpen }: LinkCardProps) {
       <div className="relative">
         <CopyButton onClick={() => handleCopyURL()} />
         {showCopyAlertMessage && (
-          <span className="absolute top-12 left-1/2 -translate-x-1/2 text-sm text-neutral-200 rounded bg-slate-800 py-1 px-2 w-28 text-center">
+          <span className="absolute top-12 left-1/2 -translate-x-1/2 text-sm text-neutral-200 rounded-sm bg-slate-800 py-1 px-2 w-28 text-center">
             URL Coppied
           </span>
         )}

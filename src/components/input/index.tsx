@@ -46,7 +46,7 @@ export function Input({
             {openTooltip && (
               <div
                 className={cn(
-                  "absolute top-5 w-[200px] bg-neutral-700 px-2 py-1 rounded border border-neutral-400 break-all",
+                  "absolute top-5 w-[200px] bg-neutral-700 px-2 py-1 rounded-sm border border-neutral-400 break-all",
                 )}
               >
                 <p>{tooltip}</p>
@@ -60,7 +60,7 @@ export function Input({
         name={label}
         aria-label={label}
         className={cn(
-          "px-6 py-3 rounded bg-input-bg text-white placeholder:text-neutral-300 border",
+          "px-6 py-3 rounded-sm bg-input-bg text-white placeholder:text-neutral-300 border",
           "transition-all duration-300",
           "focus:border-primary focus:outline-0",
           errorMessage && errorMessage.length > 1

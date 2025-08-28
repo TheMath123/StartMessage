@@ -14,7 +14,7 @@ export function Tooltip({
         className,
         'relative flex h-4 w-4 items-center justify-center',
         'before:absolute before:left-4 before:top-4 before:bg-background before:content-[attr(aria-label)]',
-        'before:pointer-events-none before:rounded before:border before:border-text before:p-1 before:shadow-sm',
+        'before:pointer-events-none before:rounded-sm before:border before:border-text before:p-1 before:shadow-xs',
         'before:opacity-0 before:transition-all before:duration-200 before:ease-linear',
         'hover:before:opacity-100',
       )}

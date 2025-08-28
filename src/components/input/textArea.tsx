@@ -47,7 +47,7 @@ export function TextArea({
                 onClick={() => setOpenTooltip(false)}
                 className={cn(
                   "absolute top-5",
-                  "flex bg-neutral-700 px-2 py-1 rounded border border-neutral-400",
+                  "flex bg-neutral-700 px-2 py-1 rounded-sm border border-neutral-400",
                 )}
               >
                 {tooltip}
@@ -61,7 +61,7 @@ export function TextArea({
         name={label}
         aria-label={label}
         className={cn(
-          "px-6 py-3 rounded bg-input-bg text-white placeholder:text-neutral-300 border",
+          "px-6 py-3 rounded-sm bg-input-bg text-white placeholder:text-neutral-300 border",
           "transition-all duration-300",
           "focus:border-primary focus:outline-0",
           errorMessage && errorMessage.length > 1
