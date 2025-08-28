@@ -1,17 +1,17 @@
 type LinksObjectProps = {
-  ddi: string;
-  phone: string;
-  message?: string;
+	ddi: string;
+	phone: string;
+	message?: string;
 };
 
 interface CreateLinkData {
-  openApp?: boolean;
+	openApp?: boolean;
 }
 
 interface ILinks {
-  ddi?: string;
-  phone?: string;
-  message?: string;
-  get: () => LinksProps | null;
-  createLink: (data?: CreateLinkData) => string;
+	ddi?: string;
+	phone?: string;
+	message?: string;
+	get: () => LinksProps | null;
+	createLink: (data?: CreateLinkData) => string;
 }

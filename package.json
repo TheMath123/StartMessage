@@ -12,7 +12,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "biome check",
+		"lint:fix": "biome check --write ./src"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "5.2.1",
