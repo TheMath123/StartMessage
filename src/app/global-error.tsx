@@ -4,7 +4,13 @@ import Link from "next/link";
 import { Footer, Header } from "@/components";
 import { cn } from "@/utils/cn";
 
-export default function NotFound() {
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <main className="flex flex-col w-full h-screen justify-between bg-background">
       <Header />
@@ -12,7 +18,7 @@ export default function NotFound() {
         <div className="flex flex-col gap-4 items-center">
           <h1 className="font-bold text-primary text-9xl italic">404</h1>
           <h2 className="font-medium text-foreground text-xl text-center">
-            Page Not Found
+            Oh no!😥 We have a problem!
           </h2>
           <Link
             className={cn(
