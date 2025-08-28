@@ -39,7 +39,7 @@ type SelectFieldProps = {
 } & DefaultFieldsProps;
 
 export function SelectField({
-  name = "select",
+  name,
   label,
   className,
   defaultValue,

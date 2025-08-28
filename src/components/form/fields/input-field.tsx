@@ -1,5 +1,3 @@
-"use client";
-
 import { useFormContext } from "react-hook-form";
 import { Input, type InputProps } from "@/components/input";
 import {

@@ -5,9 +5,11 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Footer, Header, LinkCard } from "@/components";
-import { SelectField } from "@/components/form/fields";
-import { InputField } from "@/components/form/fields/input-field";
-import { TextAreaField } from "@/components/form/fields/text-area-field";
+import {
+  InputField,
+  SelectField,
+  TextAreaField,
+} from "@/components/form/fields";
 import { SkeletonCard } from "@/components/loading/SkeletonCard";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -62,13 +64,13 @@ export function CreateLinkForm() {
               <div className="flex flex-col w-full gap-4">
                 {countries ? (
                   <SelectField
-                    name="idd"
+                    name="ddi"
                     label="IDD"
+                    placeholder="Select your country"
                     options={countries.map((item) => ({
                       value: item.value,
                       label: `${item.name} ${item.country}`,
                     }))}
-                    placeholder="Select your country"
                   />
                 ) : null}
                 <InputField
