@@ -1,5 +1,6 @@
-export interface DefaultFields {
+export interface DefaultFieldsProps {
   name: string;
+  defaultValue?: string;
   label?: string;
   placeholder?: string;
   description?: string;

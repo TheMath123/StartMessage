@@ -1,3 +1,5 @@
+"use client";
+
 import { useFormContext } from "react-hook-form";
 import { Input, type InputProps } from "@/components/input";
 import {
@@ -8,12 +10,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import type { DefaultFields } from "./types";
+import type { DefaultFieldsProps } from "./types";
 
-type InputFieldProps = DefaultFields & InputProps;
+type InputFieldProps = DefaultFieldsProps & InputProps;
 
 export function InputField({
   name,
+  defaultValue = "",
   label,
   placeholder,
   description,
@@ -23,10 +26,12 @@ export function InputField({
   enterKeyHint,
 }: InputFieldProps) {
   const form = useFormContext();
+
   return (
     <FormField
       control={form.control}
       name={name}
+      defaultValue={defaultValue}
       render={({ field }) => (
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}

@@ -8,22 +8,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import type { DefaultFields } from "./types";
+import type { DefaultFieldsProps } from "./types";
 
-type TextAreaFieldProps = DefaultFields & React.ComponentProps<"textarea">;
+type TextAreaFieldProps = DefaultFieldsProps & React.ComponentProps<"textarea">;
 
 export function TextAreaField({
   name,
   label,
+  defaultValue = "",
   placeholder,
   description,
   formatter = (value) => value,
 }: TextAreaFieldProps) {
   const form = useFormContext();
+
   return (
     <FormField
       control={form.control}
       name={name}
+      defaultValue={defaultValue}
       render={({ field }) => (
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}

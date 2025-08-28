@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const formSchema = z.object({
+export const createLinkSchema = z.object({
   ddi: z.union([
     z
       .string()
@@ -22,5 +22,11 @@ export const formSchema = z.object({
     .refine((value) => /^\d{10,11}$/.test(value), {
       error: "The phone number is invalid",
     }),
+  message: z
+    .string()
+    .max(4096, "Message must be a maximum of 4096 characters.")
+    .optional(),
   error: z.string().optional(),
 });
+
+export type CreateLinkSchema = z.infer<typeof createLinkSchema>;

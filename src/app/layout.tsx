@@ -6,7 +6,7 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { env } from "@/env";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Start Message",
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta property="og:type" content="website" />
 
@@ -51,7 +51,7 @@ export default function RootLayout({
         <link rel="icon" href="/web/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/web/apple-touch-icon.png" />
       </head>
-      <body className={inter.className}>
+      <body className={inter.variable}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
