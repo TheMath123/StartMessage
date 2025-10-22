@@ -30,7 +30,7 @@ so this application was born.
 
 Run these commands, step by step:
 
-1. `pnpm install`
-2. `pnpm dev`
+1. `bun install`
+2. `bun dev`
 
 #### [PT-BR](REAME-PTBR.md)

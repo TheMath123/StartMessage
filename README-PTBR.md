@@ -30,7 +30,7 @@ whatsapp, então nasceu este aplicativo.
 
 Execute este comandos, passo a passo:
 
-1. `pnpm install`
-2. `pnpm dev`
+1. `bun install`
+2. `bun dev`
 
 #### [EN](REAME.md)
