@@ -1,7 +1,7 @@
 "use client";
 
-import { Header, Footer } from "@/components";
 import Link from "next/link";
+import { Footer, Header } from "@/components";
 import { cn } from "@/utils/cn";
 
 export default function NotFound() {
@@ -11,7 +11,7 @@ export default function NotFound() {
       <main className="w-full h-full grid place-items-center">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="font-bold text-primary text-9xl italic">404</h1>
-          <h2 className="font-medium text-white text-xl text-center">
+          <h2 className="font-medium text-foreground text-xl text-center">
             Page Not Found
           </h2>
           <Link

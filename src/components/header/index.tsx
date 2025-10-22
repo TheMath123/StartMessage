@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ModeToggle } from "../mode-toggle";
 
 export function Header() {
   return (
@@ -14,6 +15,7 @@ export function Header() {
       </Link>
 
       <div className="flex flex-row gap-4">
+        <ModeToggle />
         <Link
           target="_blank"
           href="https://github.com/TheMath123/StartMessage"

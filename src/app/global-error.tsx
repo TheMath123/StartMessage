@@ -1,17 +1,23 @@
 "use client";
 
-import { Header, Footer } from "@/components";
 import Link from "next/link";
+import { Footer, Header } from "@/components";
 import { cn } from "@/utils/cn";
 
-export default function Error() {
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <main className="flex flex-col w-full h-screen justify-between bg-background">
       <Header />
       <main className="w-full h-full grid place-items-center">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="font-bold text-primary text-9xl italic">404</h1>
-          <h2 className="font-medium text-white text-xl text-center">
+          <h2 className="font-medium text-foreground text-xl text-center">
             Oh no!😥 We have a problem!
           </h2>
           <Link

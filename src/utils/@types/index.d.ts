@@ -1,5 +1,5 @@
 type LinksObjectProps = {
-  ddi: string;
+  ddi: string | number;
   phone: string;
   message?: string;
 };
@@ -9,7 +9,7 @@ interface CreateLinkData {
 }
 
 interface ILinks {
-  ddi?: string;
+  ddi?: string | number;
   phone?: string;
   message?: string;
   get: () => LinksProps | null;
