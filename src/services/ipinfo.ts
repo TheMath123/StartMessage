@@ -1,3 +1,5 @@
+'use server'
+
 import { env } from "@/env";
 
 export async function fetchCountry() {

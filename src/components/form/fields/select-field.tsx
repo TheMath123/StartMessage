@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 import {
@@ -54,6 +56,7 @@ export function SelectField({
     <FormField
       name={name}
       control={form.control}
+      defaultValue=''
       render={({ field }) => (
         <FormItem
           className={cn(
