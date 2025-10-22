@@ -56,7 +56,7 @@ export function SelectField({
     <FormField
       name={name}
       control={form.control}
-      defaultValue=''
+      defaultValue={undefined}
       render={({ field }) => (
         <FormItem
           className={cn(

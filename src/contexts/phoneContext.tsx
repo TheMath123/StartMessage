@@ -39,14 +39,7 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
 
   useEffect(() => {
     if (countriesData) {
-      setCountries([
-        {
-          name: "Choose your country",
-          value: "",
-          country: "",
-        },
-        ...transformData(countriesData),
-      ]);
+      setCountries(transformData(countriesData));
     }
   }, []);
 
