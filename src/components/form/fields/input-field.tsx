@@ -1,5 +1,4 @@
 import { useFormContext } from "react-hook-form";
-import { Input, type InputProps } from "@/components/input";
 import {
   FormControl,
   FormDescription,
@@ -9,8 +8,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import type { DefaultFieldsProps } from "./types";
+import { Input } from "@/components/ui/input";
 
-type InputFieldProps = DefaultFieldsProps & InputProps;
+type InputFieldProps = DefaultFieldsProps ;
 
 export function InputField({
   name,
@@ -19,9 +19,6 @@ export function InputField({
   placeholder,
   description,
   formatter = (value) => value,
-  inputMode,
-  type = "text",
-  enterKeyHint,
 }: InputFieldProps) {
   const form = useFormContext();
 
@@ -35,14 +32,12 @@ export function InputField({
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Input
-              inputMode={inputMode}
-              type={type}
-              enterKeyHint={enterKeyHint}
-              label={label ?? ""}
+              inputMode="tel"
+              enterKeyHint="next"
               placeholder={placeholder}
               value={formatter(field.value)}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                field.onChange(formatter(e.target.value))
+                field.onChange(e.target.value)
               }
             />
           </FormControl>

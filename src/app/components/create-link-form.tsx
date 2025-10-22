@@ -50,18 +50,18 @@ export function CreateLinkForm() {
   };
 
   return (
-    <main className="flex flex-col w-full h-screen justify-between bg-background overflow-hidden">
+    <main className="">
       <Header />
-      <div className="flex flex-col grow items-center justify-start p-4 gap-4">
+      <div className="flex flex-col gap-6 max-w-md w-full p-4 mx-auto">
         {loading ? (
           <SkeletonCard />
         ) : (
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg"
+              className="flex flex-col w-full max-w-2xl gap-8 p-6 border border-text border-opacity-20 bg-background rounded-lg"
             >
-              <div className="flex flex-col w-full gap-4">
+              <div className="flex flex-col gap-4">
                 {countries ? (
                   <SelectField
                     name="ddi"
@@ -69,7 +69,7 @@ export function CreateLinkForm() {
                     placeholder="Select your country"
                     options={countries.map((item) => ({
                       value: item.value,
-                      label: `${item.name} ${item.country}`,
+                      label: `${item.name}`,
                     }))}
                   />
                 ) : null}
@@ -77,8 +77,6 @@ export function CreateLinkForm() {
                   name="phone"
                   label="Phone"
                   placeholder="11912341234"
-                  type="text"
-                  inputMode="tel"
                 />
 
                 <TextAreaField
