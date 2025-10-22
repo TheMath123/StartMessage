@@ -18,12 +18,12 @@ import { Formatter } from "@/utils/Formatter";
 import { type CreateLinkSchema, createLinkSchema } from "./create-link-schema";
 
 export function CreateLinkForm() {
-  const [loading, setLoading] = useState(true);
-  const { urlCopy, urlOpen, createLink, countries } = usePhoneUtils();
-
   const params = useParams<{ phone: string }>();
   const searchParams = useSearchParams();
   const country = searchParams.get("country");
+
+  const [loading, setLoading] = useState(true);
+  const { urlCopy, urlOpen, createLink, countries } = usePhoneUtils();
 
   const form = useForm({
     values: {
