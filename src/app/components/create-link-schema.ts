@@ -1,16 +1,13 @@
 import z from "zod";
 
 export const createLinkSchema = z.object({
-  ddi: z.union([
-    z
-      .string()
-      .min(1, "DDI is mandatory")
-      .regex(
-        /^\+\d+$/,
-        "DDI must be a string of digits prefixed with a plus sign (+)",
-      ),
-    z.number().positive().int().min(1, "DDI is mandatory"),
-  ]),
+  ddi: z
+    .string()
+    .min(1, "DDI is mandatory")
+    .regex(
+      /^\+\d+$/,
+      "DDI must be a string of digits prefixed with a plus sign (+)",
+    ),
   phone: z
     .string()
     .min(3, "Mandatory telephone number.")

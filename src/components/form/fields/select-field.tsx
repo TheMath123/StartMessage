@@ -65,28 +65,21 @@ export function SelectField({
           )}
         >
           <FormLabel>{label}</FormLabel>
-          <div
-            className={
-              typeof className !== "string" && className?.select
-                ? className.select
-                : undefined
-            }
-          >
             <Select
               disabled={disabled}
               onValueChange={field.onChange}
               defaultValue={defaultValue}
-              value={field.value}
+            value={field.value}
             >
               <FormControl>
-                <SelectTrigger>
+                <SelectTrigger className="w-full overflow-hidden">
                   <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
                 {options?.map((option: SelectorOption, index) => (
                   <SelectItem
-                    key={`selector-${option.value}-${index}`}
+                    key={`selector-${name}-${index}`}
                     value={option.value}
                   >
                     {option.label}
@@ -94,7 +87,6 @@ export function SelectField({
                 ))}
               </SelectContent>
             </Select>
-          </div>
           <FormDescription>{description}</FormDescription>
           <FormMessage />
         </FormItem>

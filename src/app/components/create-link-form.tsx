@@ -27,7 +27,11 @@ export function CreateLinkForm() {
 
   const form = useForm({
     values: {
-      ddi: countries?.find((item) => item.country === country)?.value ?? "",
+      ddi: countries?.find((item) => {
+        // Verifica se o country contém o código do país (separado por |)
+        const countryCodes = item.country.split('|');
+        return countryCodes.includes(country || '');
+      })?.value ?? "",
       phone: params.phone ?? "",
     },
     resolver: zodResolver(createLinkSchema),
@@ -69,7 +73,7 @@ export function CreateLinkForm() {
                     placeholder="Select your country"
                     options={countries.map((item) => ({
                       value: item.value,
-                      label: `${item.name}`,
+                      label: item.name,
                     }))}
                   />
                 ) : null}

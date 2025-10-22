@@ -8,7 +8,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import countriesData from "@/assets/countries.json";
+import countriesData from "@/assets/countries-merged.json";
 import { fetchCountry } from "@/services/ipinfo";
 import { transformData } from "@/utils/convertData";
 import { Links } from "../utils/Links";
@@ -63,7 +63,9 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
   function verifyCountryIndex() {
     let countryIndex = null;
     countries?.forEach((item, index) => {
-      if (item.country === userInfo?.country) {
+      // Verifica se o country contém o código do país (separado por |)
+      const countryCodes = item.country.split('|');
+      if (countryCodes.includes(userInfo?.country || '')) {
         countryIndex = index;
       }
     });
