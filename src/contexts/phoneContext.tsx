@@ -64,8 +64,8 @@ export function PhoneContextProvider({ children }: IChildrenProps) {
     let countryIndex = null;
     countries?.forEach((item, index) => {
       // Verifica se o country contém o código do país (separado por |)
-      const countryCodes = item.country.split('|');
-      if (countryCodes.includes(userInfo?.country || '')) {
+      const countryCodes = item.country.split("|");
+      if (countryCodes.includes(userInfo?.country || "")) {
         countryIndex = index;
       }
     });

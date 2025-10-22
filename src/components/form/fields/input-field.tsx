@@ -10,7 +10,7 @@ import {
 import type { DefaultFieldsProps } from "./types";
 import { Input } from "@/components/ui/input";
 
-type InputFieldProps = DefaultFieldsProps ;
+type InputFieldProps = DefaultFieldsProps;
 
 export function InputField({
   name,

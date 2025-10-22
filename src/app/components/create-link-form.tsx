@@ -27,11 +27,12 @@ export function CreateLinkForm() {
 
   const form = useForm({
     values: {
-      ddi: countries?.find((item) => {
-        // Verifica se o country contém o código do país (separado por |)
-        const countryCodes = item.country.split('|');
-        return countryCodes.includes(country || '');
-      })?.value ?? "",
+      ddi:
+        countries?.find((item) => {
+          // Verifica se o country contém o código do país (separado por |)
+          const countryCodes = item.country.split("|");
+          return countryCodes.includes(country || "");
+        })?.value ?? "",
       phone: params.phone ?? "",
     },
     resolver: zodResolver(createLinkSchema),

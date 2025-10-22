@@ -9,8 +9,6 @@ interface LinkCardProps {
 }
 
 export function LinkCard({ urlCopy, urlOpen }: LinkCardProps) {
-
-
   return (
     <section className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg items-center justify-center sm:flex-row">
       <div className="flex flex-row gap-4 w-full">
@@ -31,14 +29,9 @@ export function LinkCard({ urlCopy, urlOpen }: LinkCardProps) {
         </div>
       </div>
       <div className="relative">
-        <CopyButton
-          textToCopy={urlCopy}
-          variant='default'
-          size='default'
-        >
+        <CopyButton textToCopy={urlCopy} variant="default" size="default">
           Copy Link
         </CopyButton>
-
       </div>
     </section>
   );

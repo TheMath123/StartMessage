@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import type { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
@@ -65,28 +65,28 @@ export function SelectField({
           )}
         >
           <FormLabel>{label}</FormLabel>
-            <Select
-              disabled={disabled}
-              onValueChange={field.onChange}
-              defaultValue={defaultValue}
+          <Select
+            disabled={disabled}
+            onValueChange={field.onChange}
+            defaultValue={defaultValue}
             value={field.value}
-            >
-              <FormControl>
-                <SelectTrigger className="w-full overflow-hidden">
-                  <SelectValue placeholder={placeholder} />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {options?.map((option: SelectorOption, index) => (
-                  <SelectItem
-                    key={`selector-${name}-${index}`}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+          >
+            <FormControl>
+              <SelectTrigger className="w-full overflow-hidden">
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              {options?.map((option: SelectorOption, index) => (
+                <SelectItem
+                  key={`selector-${name}-${index}`}
+                  value={option.value}
+                >
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <FormDescription>{description}</FormDescription>
           <FormMessage />
         </FormItem>
