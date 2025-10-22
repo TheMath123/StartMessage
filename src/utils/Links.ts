@@ -4,11 +4,11 @@ export class Links implements ILinks {
 	message?: string;
 
 	constructor(data: LinksObjectProps) {
-		let phoneRaw = data.phone.replace(/\D/gim, "");
+		const phoneRaw = data.phone.replace(/\D/gim, "");
 		if (data.ddi === "none" || !data.ddi || data.ddi === "") {
 			throw Error("Invalid DDI!");
 		}
-		this.ddi = data.ddi;
+		this.ddi = `${data.ddi}`;
 		this.phone = phoneRaw;
 		this.message = data.message?.trim();
 	}
@@ -22,16 +22,16 @@ export class Links implements ILinks {
 	}
 
 	createLink({ openApp = false } = {}) {
-		let baseURl = openApp
+		const baseURl = openApp
 			? `whatsapp://send/?phone=${this.ddi}${this.phone}`
 			: `https://wa.me/${this.ddi}${this.phone}`;
 		let fullUrl = baseURl;
 
 		if (this.message) {
 			if (openApp) {
-				fullUrl += "&text=" + encodeURI(this.message);
+				fullUrl += `&text=${encodeURI(this.message)}`;
 			} else {
-				fullUrl += "?text=" + encodeURI(this.message);
+				fullUrl += `?text=${encodeURI(this.message)}`;
 			}
 		}
 
