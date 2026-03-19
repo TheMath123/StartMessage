@@ -4,31 +4,32 @@ import { ModeToggle } from "../mode-toggle";
 
 export function Header() {
   return (
-    <header className="flex flex-row items-center justify-between py-4 px-16">
+    <header className="flex flex-row items-center justify-between py-2.5 px-6 border-b border-border">
       <Link href={"/"}>
         <Image
           src="images/start-message-logo.svg"
-          width={48}
-          height={48}
+          width={32}
+          height={32}
           alt="Start Message"
         />
       </Link>
 
-      <div className="flex flex-row gap-4">
-        <ModeToggle />
+      <div className="flex flex-row gap-3 items-center">
         <Link
           target="_blank"
           href="https://github.com/TheMath123/StartMessage"
-          className="flex flex-row gap-2 items-center hover:brightness-90 active:brightness-75"
+          className="flex flex-row gap-1.5 items-center text-muted-foreground hover:text-foreground transition-colors text-sm"
         >
           <Image
             src="icons/github.svg"
-            width={24}
-            height={24}
+            width={16}
+            height={16}
             alt="Logo do github"
+            className="opacity-70"
           />
-          <span className="tex-text text-base font-bold">Github</span>
+          <span>GitHub</span>
         </Link>
+        <ModeToggle />
       </div>
     </header>
   );

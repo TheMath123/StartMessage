@@ -10,29 +10,26 @@ interface LinkCardProps {
 
 export function LinkCard({ urlCopy, urlOpen }: LinkCardProps) {
   return (
-    <section className="flex flex-col w-full max-w-2xl gap-8 p-8 border border-text border-opacity-20 bg-background rounded-lg items-center justify-center sm:flex-row">
-      <div className="flex flex-row gap-4 w-full">
+    <section className="flex flex-col w-full gap-3 p-4 border border-border bg-card rounded">
+      <div className="flex flex-row gap-2.5 items-start w-full">
         <Image
-          width={24}
-          height={24}
+          width={14}
+          height={14}
           src={"icons/link-external.svg"}
           alt={""}
+          className="mt-0.5 opacity-50 shrink-0"
         />
-        <div className="w-full">
-          <a
-            href={urlOpen}
-            target="_blank"
-            className="max-w-[400px] w-full text-foreground text-base font-normal underline break-all"
-          >
-            {urlCopy}
-          </a>
-        </div>
+        <a
+          href={urlOpen}
+          target="_blank"
+          className="w-full text-foreground text-sm hover:text-primary transition-colors break-all"
+        >
+          {urlCopy}
+        </a>
       </div>
-      <div className="relative">
-        <CopyButton textToCopy={urlCopy} variant="default" size="default">
-          Copy Link
-        </CopyButton>
-      </div>
+      <CopyButton textToCopy={urlCopy} variant="outline" size="sm">
+        Copy Link
+      </CopyButton>
     </section>
   );
 }
